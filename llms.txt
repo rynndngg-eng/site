@@ -1,0 +1,39 @@
+# Pren
+
+> Pren is an accounting service for startups. Expert AI agents keep your books, prepare your business taxes, run payroll, bills and invoices, and build your cash forecasts. A small professional team handles qualified judgment and review. Plans start at $299 per month.
+
+Pren (usepren.com) is a startup accounting service based in San Francisco, CA. It serves US startups from pre-seed through Series A and beyond: monthly bookkeeping and financial statements, business tax preparation and filing, payroll, bills and invoices, budgets and cash forecasts, and board and fundraising reports. Customers sign up and work with Pren in the Pren app at https://app.usepren.com.
+
+Key facts:
+- Website: https://usepren.com/
+- Sign up or sign in: https://app.usepren.com/
+- Pricing: Pren $299 per month; Pren Plus $799 per month; Custom pricing for more entities or specialist work.
+- How it works: AI agents prepare the work, a small professional team reviews it, and the founder approves decisions. The included work, full price and first delivery date are agreed before service starts.
+- Contact: ryan@usepren.com
+- Location: 501 Folsom Street, San Francisco, CA 94105
+
+## Plans
+
+- **Pren** (Pre-seed & seed): $299 per month. Books & business taxes. Monthly books and agreed business-tax filings. Includes: 12 monthly closes per year; Up to 5 financial accounts; 500 imported entries per month; Business tax preparation & filing; Reviewed financial statements; Answers, records & exports.
+- **Pren Plus** (Series A): $799 per month. Accounting, payroll & planning. Payroll and planning, connected to your books. Includes: Payroll for up to 10 California workers; 20 new bills + 20 new invoices per month; Budgets & a 13-week cash forecast; A 24-month financial forecast; Hiring & spending scenarios; Quarterly board reports & fundraising prep.
+- **Custom** (Growth & beyond): custom pricing. A plan for your company. More people, entities or specialist work. Includes: Services chosen for your company; Additional companies, states & countries; More transactions & specialist work; Agreed services, price & delivery dates.
+
+## Services
+
+- [Monthly bookkeeping](https://usepren.com/services/accounting/): Monthly bookkeeping, reviewed. Current books. Transactions sorted. Accounts reconciled.
+- [Business taxes](https://usepren.com/services/taxes/): Business tax preparation and filing. Organized records. Prepared returns. Filing follow-up.
+- [Payroll, bills & invoices](https://usepren.com/services/payroll/): Payroll, bills and customer invoices. Pay your team. Handle bills. Collect payments. With Pren Plus.
+- [Cash planning](https://usepren.com/services/cash-planning/): Budget and cash forecasts. See your runway and what your next hire changes.
+- [Board & fundraising reports](https://usepren.com/services/fundraising-readiness/): Board and fundraising reports. Organized financials for board meetings and fundraising.
+
+## Company
+
+- [About Pren](https://usepren.com/about/): who Pren is and how it works.
+- [Pricing](https://usepren.com/pricing/): plans, what is included and common questions.
+- [Contact](https://usepren.com/contact/): start a plan, email or sign in.
+
+## Optional
+
+- [Full text for language models](https://usepren.com/llms-full.txt)
+- [Privacy](https://usepren.com/legal/privacy/)
+- [Terms](https://usepren.com/legal/terms/)
