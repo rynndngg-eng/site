@@ -102,6 +102,13 @@
   .pill.good,.pill.ok{background:var(--good-soft);color:var(--good)}
   .pill.warn{background:var(--warn-soft);color:var(--warn)}
   .pill.bad{background:var(--bad-soft);color:var(--bad)}
+  .rc-side{display:flex;flex-direction:column;gap:24px;min-width:0}
+  .about-card{border:1px solid var(--line);background:var(--wash);padding:clamp(20px,2.6vw,28px);display:flex;flex-direction:column;gap:10px}
+  .about-card .label{margin-bottom:0}
+  .about-card h2{font-size:22px;letter-spacing:-.02em}
+  .about-card p{font-size:15px;line-height:1.55}
+  .about-card .about-price{color:var(--muted);font-size:13px;font-family:var(--mono)}
+  .about-card .btn{align-self:flex-start;margin-top:6px}
   .rc-wide{margin-top:24px}
   .chartcard{position:relative}
   .chartcard .top{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:12px}
@@ -229,6 +236,7 @@
       </form>
     </div>
 
+    <div class="rc-side">
     <div class="kpis" aria-live="polite">
       <div class="kpi hero">
         <span class="l">Runway, base case<button type="button" class="help" data-tip="Months until cash hits zero on the base path, using your growth rate and hire timing. Fractional: 10.3 means ten months and about nine days." aria-label="More about this field">?</button></span>
@@ -245,6 +253,14 @@
         <span class="l">Full result</span>
         <span class="sub">When to start raising, the 24-month cash curve, three scenarios, your burn multiple and the deadlines you're carrying are below. They unlock with your email.</span>
       </div>
+    </div>
+    <aside class="about-card" aria-labelledby="about-title">
+      <p class="label">About Pren</p>
+      <h2 id="about-title">Your books and taxes, handled.</h2>
+      <p>Pren runs your startup's accounting and taxes for one flat price. Our agents prepare, a person reviews, and a licensed preparer signs your return. You stop chasing paperwork.</p>
+      <p class="about-price">From $299 a month. Nothing is charged until service starts.</p>
+      <a class="btn" id="cta-about" href="https://app.usepren.com/start?plan=pren">Start with Pren</a>
+    </aside>
     </div>
   </div>
 
@@ -575,7 +591,7 @@
   });
   // a visitor who asked for a code, left, and came back inside 15 minutes lands on the code step
   { const pd=pending(); if(pd&&!isUnlocked()){ $('em').value=pd.email; showCodeStep(pd.email); } }
-  ['cta-app','cta-app-2'].forEach(id=>$(id).addEventListener('click',()=>track('runway_app_cta_clicked',Object.assign({placement:id},last||{}))));
+  ['cta-app','cta-app-2','cta-about'].forEach(id=>$(id).addEventListener('click',()=>track('runway_app_cta_clicked',Object.assign({placement:id},last||{}))));
 
   const prefilled=fromUrl();
   if(['mrr','growth','margin','infer'].some(id=>$(id).value!=='')) $('opt-revenue').open=true;
