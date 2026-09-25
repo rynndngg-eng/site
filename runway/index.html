@@ -139,6 +139,20 @@
   .rc-actions{display:flex;gap:16px;flex-wrap:wrap;align-items:center;margin-top:24px}
   .btn.ghost{background:transparent;color:var(--ink);border:1px solid var(--ink)}
   .btn.ghost:hover{background:var(--wash)}
+  .gated{position:relative}
+  .gated .locked{filter:blur(7px);pointer-events:none;user-select:none;opacity:.55}
+  .gate{position:absolute;inset:0;display:flex;align-items:flex-start;justify-content:center;padding-top:clamp(24px,6vw,72px);z-index:3}
+  .gate-box{background:var(--paper);border:1px solid var(--ink);padding:clamp(22px,3vw,32px);max-width:460px;width:calc(100% - 32px);box-shadow:0 12px 40px #17252226}
+  .gate-box h2{font-size:24px;letter-spacing:-.03em;margin-bottom:8px}
+  .gate-box p{color:var(--muted);font-size:14px;line-height:1.55}
+  .gate-box ul.checks{margin-top:14px;font-size:14px;gap:8px}
+  .gate-box .email{margin-top:18px}
+  .gate-box .consent{display:flex;gap:10px;align-items:flex-start;margin-top:14px;font-size:13px;color:var(--ink);line-height:1.5}
+  .gate-box .consent input{accent-color:var(--accent);width:16px;height:16px;flex:none;margin-top:2px}
+  .email-note a{color:var(--accent)}
+  .unlocked .locked{filter:none;pointer-events:auto;user-select:auto;opacity:1}
+  .unlocked .gate{display:none}
+  .thanks{margin-top:24px;padding:14px 16px;background:var(--wash);font-size:14px;line-height:1.55}
   details.how{margin-top:24px}
   details.how ul{margin:10px 0 0;padding-left:18px;display:grid;gap:6px;color:var(--muted);font-size:14px;max-width:60em}
   @media print{header.top,footer.site,section.cta,.rc-actions,.email,.email-note,.help,.skip{display:none!important}body{background:#fff}.rc,.rc-two{grid-template-columns:1fr 1fr}.panel,.kpis{break-inside:avoid}section{padding:16px 0}section.hero{padding-top:0}}
@@ -205,22 +219,45 @@
         <span id="k-grade" class="pill ok">—</span>
         <span class="sub" id="k-zero">—</span>
       </div>
+      <div class="kpi" style="grid-column:1/-1">
+        <span class="l">Net burn this month<button type="button" class="help" data-tip="Cash out minus cash in this month: spend, plus hires already in seat, minus MRR × gross margin. Default alive means growth reaches break-even before cash runs out." aria-label="More about this field">?</button></span>
+        <span class="v" id="k-burn">—</span>
+        <span class="sub" id="k-alive">—</span>
+      </div>
+      <div class="kpi" style="grid-column:1/-1;border-top:1px solid var(--line)">
+        <span class="l">Full result</span>
+        <span class="sub">When to start raising, the 24-month cash curve, three scenarios, your burn multiple and the deadlines you're carrying are below. They unlock with your email.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="gated" id="gated">
+  <div class="gate" id="gate">
+    <div class="gate-box">
+      <h2>See the full result</h2>
+      <p>Your runway is above. The rest is where the decisions are:</p>
+      <ul class="checks"><li>When to start raising, and the month cash runs out</li><li>Cash over the next 24 months in three scenarios</li><li>Your burn multiple and gross margin after inference</li><li>The tax deadlines your company is carrying, with days left</li></ul>
+      <form class="email" id="emailform">
+        <label for="em" style="position:absolute;left:-9999px">Email</label>
+        <input id="em" type="email" placeholder="you@startup.com" autocomplete="email" required>
+        <button class="btn" type="submit" id="send">Show my full result</button>
+      </form>
+      <label class="consent"><input id="consent" type="checkbox"> Also send me Pren's deadline reminders and occasional updates. Unsubscribe any time.</label>
+      <p class="email-note" id="email-note">Unlocks instantly. We email you a link to this result. Nothing else unless you tick the box above or reply. <a href="/legal/privacy/">Privacy</a>.</p>
+    </div>
+  </div>
+  <div class="locked" id="locked">
+  <div class="kpis rc-wide">
       <div class="kpi">
         <span class="l">Start raising by<button type="button" class="help" data-tip="Zero-cash date minus six months. Seed rounds take three to six months to close; start later and you negotiate from weakness." aria-label="More about this field">?</button></span>
         <span class="v" id="k-raise">—</span>
         <span class="sub">Six months before zero cash, base case</span>
       </div>
       <div class="kpi">
-        <span class="l">Net burn this month<button type="button" class="help" data-tip="Cash out minus cash in this month: spend, plus hires already in seat, minus MRR × gross margin. Default alive means growth reaches break-even before cash runs out." aria-label="More about this field">?</button></span>
-        <span class="v" id="k-burn">—</span>
-        <span class="sub" id="k-alive">—</span>
-      </div>
-      <div class="kpi" style="grid-column:1/-1">
         <span class="l">Burn multiple<button type="button" class="help" data-tip="Net burn divided by net new ARR added this month. Under 1 is efficient, 1 to 2 is normal at seed, over 2 means each dollar of ARR is expensive." aria-label="More about this field">?</button></span>
         <span class="v" id="k-bm">—</span>
         <span class="sub" id="k-bm-sub">Net burn ÷ net new ARR</span>
       </div>
-    </div>
   </div>
 
   <div class="panel chartcard rc-wide">
@@ -244,14 +281,11 @@
     <div class="panel">
       <h2>Deadlines you're probably carrying<button type="button" class="help right" data-tip="General rules for a US C-corp, dated from today. Days count down to the next occurrence. Not advice for your specific situation; your tax professional confirms." aria-label="More about this field">?</button></h2>
       <ul class="deadlines" id="deadlines"></ul>
-      <form class="email" id="emailform">
-        <label for="em" style="position:absolute;left:-9999px">Email</label>
-        <input id="em" type="email" placeholder="you@startup.com" autocomplete="email" required>
-        <button class="btn" type="submit" id="send">Send me this as a PDF</button>
-      </form>
-      <p class="email-note" id="email-note">We email you this page as a PDF within a day, and nothing else unless you ask.</p>
     </div>
   </div>
+  </div>
+  </div>
+  <p class="thanks" id="thanks" hidden></p>
 
   <div class="rc-actions">
     <a class="btn" id="cta-app" href="https://app.usepren.com/start?plan=pren">See your real runway from your bank</a>
@@ -308,10 +342,11 @@
     if(q.has('foreign')) $('foreign').checked=q.get('foreign')==='1';
     return any;
   }
-  function toUrl(){
+  function toUrl(unlocked){
     // keep whatever else is on the URL (utm_* from a campaign link) so attribution survives edits
     const q=new URLSearchParams(location.search);
-    [...IDS,'de','foreign'].forEach(id=>q.delete(id));
+    [...IDS,'de','foreign','unlocked'].forEach(id=>q.delete(id));
+    if(unlocked) q.set('unlocked','1');
     IDS.forEach(id=>{ if($(id).value!=='') q.set(id,$(id).value); });
     q.set('de',$('de').checked?'1':'0'); q.set('foreign',$('foreign').checked?'1':'0');
     return location.origin+location.pathname+'?'+q.toString();
@@ -428,7 +463,11 @@
     if(p.states>1){dl.push(['Quarterly',null,`State withholding and unemployment filings in ${p.states} states.`]);}
     dl.sort((a,b)=>(a[1]??999)-(b[1]??999));
     $('deadlines').innerHTML=dl.map(([d,n,t])=>`<li><span class="d ${n!==null&&n<75?'soon':''}">${d}${n!==null?`<br>${n} days`:''}</span><span>${t}</span></li>`).join('');
-    last={months: base.runway===Infinity?36:Math.round(base.runway*10)/10, grade: txt, cash_band: band(p.cash), burn_band: burnBand(netBurn), scenarios: paths.length, has_revenue: p.mrr>0, planned_hires: p.hires, delaware: p.de, foreign_owner: p.foreign};
+    const dated=dl.filter(x=>x[1]!==null);
+    last={months: base.runway===Infinity?36:Math.round(base.runway*10)/10, grade: txt, cash_band: band(p.cash), burn_band: burnBand(netBurn),
+      zero_cash_month: base.runway===Infinity?'not within 5 years':mdate(Math.floor(base.runway)), raise_by: raiseBy(base.runway),
+      deadline_1_date: dated[0]?dated[0][0]:'', deadline_1_text: dated[0]?dated[0][2]:'', deadline_2_date: dated[1]?dated[1][0]:'', deadline_2_text: dated[1]?dated[1][2]:'',
+      scenarios: paths.length, has_revenue: p.mrr>0, planned_hires: p.hires, delaware: p.de, foreign_owner: p.foreign, unlocked: isUnlocked()};
     try{ history.replaceState(null,'',toUrl()); }catch(e){}
   }
 
@@ -438,19 +477,32 @@
   [...IDS,'de','foreign'].forEach(id=>$(id).addEventListener('input',()=>{run(); scheduleTrack();}));
   window.addEventListener('resize',()=>run());
 
+  // the gate: runway is free, the rest unlocks with an email. Unlock is remembered in this browser,
+  // and the emailed link carries unlocked=1 so it opens in full on any device.
+  const KEY='pren_runway_unlocked';
+  function isUnlocked(){ try{ return !!localStorage.getItem(KEY); }catch(e){ return false; } }
+  function unlock(em){
+    document.getElementById('gated').classList.add('unlocked');
+    document.getElementById('locked').removeAttribute('aria-hidden');
+    try{ if(em) localStorage.setItem(KEY,em); }catch(e){}
+  }
   $('emailform').addEventListener('submit',e=>{
     e.preventDefault();
     const em=$('em').value.trim(); if(!em) return;
-    const p=ph(); const note=$('email-note');
-    if(p){ try{ p.identify(em,{email:em}); }catch(err){} track('runway_email_captured',Object.assign({share_url:toUrl()},last||{})); note.textContent='Got it. We will email the PDF to '+em+' within a day.'; }
-    else { note.textContent='Your browser blocked our analytics script, so this form cannot reach us. Email zoe@usepren.com with the link from "Copy a link" and we will send the PDF.'; }
-    $('send').disabled=true; $('send').textContent='Sent';
+    const p=ph(); const th=$('thanks');
+    unlock(em); run();
+    const consent=$('consent').checked;
+    if(p){ try{ p.identify(em,{email:em, marketing_consent:consent, marketing_consent_at:consent?new Date().toISOString():null, marketing_consent_source:consent?'runway-check':null}); }catch(err){} track('runway_email_captured',Object.assign({share_url:toUrl(true), marketing_consent:consent},last||{})); th.textContent='Unlocked. A link to this result is on its way to '+em+'. Change any number above and the result updates.'; }
+    else { th.textContent='Unlocked. Your browser blocked our analytics script, so we could not record your email; use "Copy a link" to keep this result.'; }
+    th.hidden=false;
+    document.getElementById('locked').scrollIntoView({behavior:'smooth',block:'start'});
   });
   $('print').addEventListener('click',()=>{ track('runway_print_clicked',last||{}); window.print(); });
   $('copy').addEventListener('click',()=>{ const url=toUrl(); const b=$('copy'); const done=()=>{ b.textContent='Link copied'; setTimeout(()=>b.textContent='Copy a link to these numbers',1800); }; if(navigator.clipboard) navigator.clipboard.writeText(url).then(done,()=>prompt('Copy this link',url)); else prompt('Copy this link',url); track('runway_link_copied',last||{}); });
   ['cta-app','cta-app-2'].forEach(id=>$(id).addEventListener('click',()=>track('runway_app_cta_clicked',Object.assign({placement:id},last||{}))));
 
   const prefilled=fromUrl();
+  if(new URLSearchParams(location.search).get('unlocked')==='1'||isUnlocked()) unlock(null); else document.getElementById('locked').setAttribute('aria-hidden','true');
   run();
   if(prefilled) track('runway_link_opened',last||{});
 })();
