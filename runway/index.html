@@ -1,0 +1,459 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#f8f9fa">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<title>Startup runway calculator | Pren</title>
+<meta name="description" content="Type the numbers you already know and see your runway to the month in 60 seconds: three scenarios, when to start raising, your burn multiple, and the tax deadlines a US C-corp is carrying. No bank login, no account.">
+<link rel="canonical" href="https://usepren.com/runway/">
+<meta property="og:site_name" content="Pren">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_US">
+<meta property="og:title" content="Do you know your runway to the month?">
+<meta property="og:description" content="A 60-second runway check for startups. Three scenarios, when to start raising, and the tax deadlines you're probably carrying. No bank login.">
+<meta property="og:url" content="https://usepren.com/runway/">
+<meta property="og:image" content="https://usepren.com/assets/og-runway.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Do you know your runway to the month? A 60-second check from Pren.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Do you know your runway to the month?">
+<meta name="twitter:description" content="A 60-second runway check for startups. Three scenarios, when to start raising, and the tax deadlines you're probably carrying. No bank login.">
+<meta name="twitter:image" content="https://usepren.com/assets/og-runway.png">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/pren-logo-512.png">
+<link rel="preload" href="/assets/ibm-plex-sans-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/ibm-plex-mono-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/site.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","@id":"https://usepren.com/runway/#app","name":"Pren runway calculator","url":"https://usepren.com/runway/","applicationCategory":"FinanceApplication","operatingSystem":"Web","isAccessibleForFree":true,"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"A 60-second startup runway calculator: three scenarios, when to start raising, burn multiple, and the tax deadlines a US C-corp is carrying.","publisher":{"@id":"https://usepren.com/#organization"}},{"@type":"WebPage","@id":"https://usepren.com/runway/","url":"https://usepren.com/runway/","name":"Startup runway calculator | Pren","isPartOf":{"@id":"https://usepren.com/#website"},"about":{"@id":"https://usepren.com/runway/#app"}}]}</script>
+<link rel="preconnect" href="https://us-assets.i.posthog.com" crossorigin>
+<link rel="preconnect" href="https://us.i.posthog.com">
+<!-- PostHog: product analytics, session replay and error tracking for usepren.com -->
+<script>
+  (function () {
+    var s = document.createElement("script");
+    s.src = "https://us-assets.i.posthog.com/static/array.js";
+    s.async = true; s.crossOrigin = "anonymous";
+    s.onload = function () {
+      window.posthog.init("phc_uoiwr36ssFLqHkGYi5e6H5YHJieWVKr4aDAM3YkLoUNi", {
+        api_host: "https://us.i.posthog.com",
+        defaults: "2026-05-30",
+        capture_exceptions: true
+      });
+    };
+    document.head.appendChild(s);
+  })();
+</script>
+<style>
+  :root{--s-base:#204b3d;--s-cons:#8a6d1f;--s-opt:#3b5f9e;--good:#204b3d;--good-soft:#e2ece7;--warn:#8a6d1f;--warn-soft:#f3ecd8;--bad:#9a3b2e;--bad-soft:#f4e1dd}
+  .rc-hero .lead{max-width:38em}
+  .rc-hero .fine{margin-top:14px;font:13px/1.5 var(--mono);color:var(--muted)}
+  .rc{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:24px;margin-top:40px;align-items:start}
+  @media (max-width:900px){.rc{grid-template-columns:minmax(0,1fr)}}
+  .panel{border:1px solid var(--line);background:var(--paper);padding:clamp(20px,2.6vw,28px)}
+  .panel h2{font-size:22px;letter-spacing:-.02em;margin-bottom:4px}
+  .panel .label{margin-bottom:0}
+  .rc-head{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin-bottom:18px}
+  fieldset{border:0;padding:0;margin:0 0 18px;display:grid;grid-template-columns:1fr 1fr;gap:12px 14px}
+  fieldset:last-of-type{margin-bottom:0}
+  legend{font:11px/1.5 var(--mono);color:var(--muted);padding:0;margin-bottom:8px;grid-column:1/-1;text-transform:uppercase;letter-spacing:.08em}
+  legend em{font-style:normal;color:var(--accent);margin-left:6px;text-transform:none;letter-spacing:0}
+  .field{display:flex;flex-direction:column;gap:6px;min-width:0}
+  .field label{font-size:14px;color:var(--ink)}
+  .field .in{display:flex;align-items:center;border:1px solid var(--line);background:#fff}
+  .field .in span{font:500 13px var(--mono);color:var(--muted);padding-left:10px}
+  .field input[type=number]{font:500 16px var(--mono);padding:10px;border:0;background:transparent;color:var(--ink);width:100%;min-width:0}
+  .field input[type=number]:focus{outline:none}
+  .field .in:focus-within{outline:2px solid var(--accent);outline-offset:1px}
+  .checks{grid-column:1/-1;display:flex;gap:18px;flex-wrap:wrap;font-size:14px}
+  .checks label{display:inline-flex;gap:8px;align-items:center}
+  .checks input{accent-color:var(--accent);width:16px;height:16px}
+  .hint{grid-column:1/-1;font-size:13px;color:var(--muted);line-height:1.5}
+  @media (max-width:480px){fieldset{grid-template-columns:1fr}}
+  .lr{display:flex;align-items:center;gap:4px}
+  .help{display:inline-flex;align-items:center;justify-content:center;width:16px;height:16px;border-radius:50%;border:1px solid var(--line);background:#fff;color:var(--muted);font:500 10px/1 var(--mono);margin-left:6px;cursor:help;position:relative;padding:0;flex:none}
+  .help:hover,.help:focus-visible{color:var(--ink);border-color:var(--muted);outline:none}
+  .help::after{content:attr(data-tip);position:absolute;bottom:calc(100% + 8px);left:0;width:min(260px,70vw);background:var(--ink);color:var(--paper);font:12px/1.45 var(--sans);text-align:left;text-transform:none;letter-spacing:0;padding:9px 11px;opacity:0;pointer-events:none;transition:opacity .1s;z-index:20;white-space:normal}
+  .help.right::after,.field:nth-of-type(even) .help::after,.kpi:last-child .help::after{left:auto;right:0}
+  .help:hover::after,.help:focus-visible::after{opacity:1}
+  h2 .help,h3 .help{margin-left:8px;vertical-align:middle}
+  .checks .help{margin-left:-10px;margin-right:6px}
+  .kpis{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line)}
+  .kpi{background:var(--paper);padding:18px 20px;display:flex;flex-direction:column;gap:6px;min-width:0}
+  .kpi.hero{grid-column:1/-1}
+  .kpi .l{font-size:13px;color:var(--muted);display:flex;align-items:center}
+  .kpi .v{font:400 30px/1.05 var(--sans);letter-spacing:-.03em;font-variant-numeric:tabular-nums}
+  .kpi.hero .v{font-size:clamp(48px,6vw,68px)}
+  .kpi .v small{font:12px var(--mono);letter-spacing:0;color:var(--muted);margin-left:8px}
+  .kpi .sub{font-size:13px;color:var(--muted);line-height:1.5}
+  .pill{display:inline-flex;align-items:center;gap:6px;font:500 11px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;padding:6px 9px;width:max-content}
+  .pill::before{content:"";width:8px;height:8px;background:currentColor}
+  .pill.good,.pill.ok{background:var(--good-soft);color:var(--good)}
+  .pill.warn{background:var(--warn-soft);color:var(--warn)}
+  .pill.bad{background:var(--bad-soft);color:var(--bad)}
+  .rc-wide{margin-top:24px}
+  .chartcard{position:relative}
+  .chartcard .top{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:12px}
+  .legend{display:flex;gap:16px;flex-wrap:wrap;font-size:13px;color:var(--muted)}
+  .legend span{display:inline-flex;align-items:center;gap:7px}
+  .legend i{width:14px;height:2px;display:inline-block}
+  .legend i.base{background:var(--s-base)} .legend i.cons{background:var(--s-cons)} .legend i.opt{background:var(--s-opt)}
+  svg.chart{width:100%;height:auto;display:block;overflow:visible}
+  .chart text{font-family:var(--mono);font-size:11px;fill:var(--muted)}
+  .chart .lbl{font-family:var(--sans);font-size:12px;fill:var(--ink)}
+  .chart .grid{stroke:var(--wash);stroke-width:1}
+  .chart .axis{stroke:var(--line);stroke-width:1}
+  .chart .ln{fill:none;stroke-width:2;stroke-linejoin:round;stroke-linecap:round}
+  .chart .base{stroke:var(--s-base)} .chart .cons{stroke:var(--s-cons)} .chart .opt{stroke:var(--s-opt)}
+  .chart .wash{fill:var(--s-base);opacity:.08}
+  .chart .dot{stroke:var(--paper);stroke-width:2}
+  .chart .dot.base{fill:var(--s-base)} .chart .dot.cons{fill:var(--s-cons)} .chart .dot.opt{fill:var(--s-opt)}
+  .chart .cross{stroke:var(--ink);stroke-width:1;opacity:0}
+  .chart .raise{stroke:var(--accent);stroke-width:1;stroke-dasharray:3 3}
+  .tip{position:absolute;pointer-events:none;background:var(--ink);color:var(--paper);font:12px/1.4 var(--mono);padding:8px 10px;opacity:0;transform:translate(-50%,-110%);white-space:nowrap;transition:opacity .08s}
+  .tip b{font-weight:500;display:block;margin-bottom:3px}
+  .rc-two{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:24px;margin-top:24px}
+  @media (max-width:900px){.rc-two{grid-template-columns:minmax(0,1fr)}}
+  table{width:100%;border-collapse:collapse;font-size:14px}
+  th,td{text-align:left;padding:10px 10px 10px 0;border-bottom:1px solid var(--line);vertical-align:top}
+  th{font:11px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:400}
+  td.num{white-space:nowrap;font-family:var(--mono);font-size:13px}
+  td .key{display:inline-block;width:10px;height:10px;margin-right:8px;vertical-align:-1px}
+  #scen td:first-child{white-space:nowrap}
+  #scen td:nth-child(2){min-width:11em}
+  .key.base{background:var(--s-base)} .key.cons{background:var(--s-cons)} .key.opt{background:var(--s-opt)}
+  .tablewrap{overflow-x:auto;margin-top:12px}
+  .foot{font-size:13px;color:var(--muted);margin-top:12px;line-height:1.5}
+  .deadlines{margin:12px 0 0;padding:0;list-style:none;display:grid;gap:8px;font-size:14px}
+  .deadlines li{display:grid;grid-template-columns:104px 1fr;gap:12px;padding:10px 12px;background:var(--wash)}
+  .deadlines .d{font:500 12px/1.5 var(--mono);color:var(--accent)}
+  .deadlines .d.soon{color:var(--warn)}
+  .email{display:flex;gap:8px;margin-top:18px}
+  .email input{flex:1;font:15px var(--sans);padding:11px 12px;border:1px solid var(--line);background:#fff;color:var(--ink);min-width:0}
+  .email input:focus{outline:2px solid var(--accent);outline-offset:1px}
+  .email .btn{border:0}
+  @media (max-width:480px){.email{flex-direction:column}}
+  .email-note{font-size:12px;color:var(--muted);margin-top:8px;line-height:1.5}
+  .rc-actions{display:flex;gap:16px;flex-wrap:wrap;align-items:center;margin-top:24px}
+  .btn.ghost{background:transparent;color:var(--ink);border:1px solid var(--ink)}
+  .btn.ghost:hover{background:var(--wash)}
+  details.how{margin-top:24px}
+  details.how ul{margin:10px 0 0;padding-left:18px;display:grid;gap:6px;color:var(--muted);font-size:14px;max-width:60em}
+  @media print{header.top,footer.site,section.cta,.rc-actions,.email,.email-note,.help,.skip{display:none!important}body{background:#fff}.rc,.rc-two{grid-template-columns:1fr 1fr}.panel,.kpis{break-inside:avoid}section{padding:16px 0}section.hero{padding-top:0}}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top">
+  <a class="wordmark" href="/" aria-label="Pren home">pren.</a>
+  <nav class="primary" aria-label="Main navigation">
+    <a class="opt" href="/services/accounting/">Services</a>
+    <a href="/pricing/">Pricing</a>
+    <a class="opt" href="/about/">About</a>
+    <a href="https://app.usepren.com/">Sign in</a>
+    <a class="btn btn-small" href="https://app.usepren.com/start?plan=pren">Get started</a>
+  </nav>
+</header>
+<main id="main">
+<section class="hero rc-hero"><div class="wrap">
+  <p class="label">Runway check · 60 seconds</p>
+  <h1>Do you know your runway to the month?</h1>
+  <p class="lead">Type the numbers you already know. See how many months of cash you have in three scenarios, when to start raising, and the tax deadlines a US C-corp is carrying.</p>
+  <p class="fine">No bank login. No account. Your numbers stay in your browser.</p>
+
+  <div class="rc">
+    <div class="panel calc" id="runway">
+      <div class="rc-head"><h2>Your numbers</h2><span class="label">Results update as you type</span></div>
+      <form id="calc" onsubmit="return false">
+        <fieldset>
+          <legend>Required</legend>
+          <div class="field"><div class="lr"><label for="cash">Cash in the bank</label><button type="button" class="help" data-tip="Total cash in your operating and sweep accounts today. Exclude receivables, credit lines and funding that has not wired yet." aria-label="More about this field">?</button></div><div class="in"><span>$</span><input id="cash" type="number" inputmode="numeric" value="850000" min="0" step="1000" required></div></div>
+          <div class="field"><div class="lr"><label for="spend">Gross monthly spend</label><button type="button" class="help" data-tip="Everything that leaves the account in a typical month before any revenue: payroll, contractors, cloud and inference, rent, software, fees." aria-label="More about this field">?</button></div><div class="in"><span>$</span><input id="spend" type="number" inputmode="numeric" value="70000" min="0" step="1000" required></div></div>
+          <p class="hint">These two give you runway. Everything below is optional and adds scenarios.</p>
+        </fieldset>
+        <fieldset>
+          <legend>Revenue <em>optional</em></legend>
+          <div class="field"><div class="lr"><label for="mrr">MRR</label><button type="button" class="help" data-tip="Monthly recurring revenue billed this month. Leave blank if pre-revenue. One-off pilots and services don't count." aria-label="More about this field">?</button></div><div class="in"><span>$</span><input id="mrr" type="number" inputmode="numeric" value="8000" min="0" step="500" placeholder="0"></div></div>
+          <div class="field"><div class="lr"><label for="growth">MRR growth, month over month</label><button type="button" class="help" data-tip="Month-over-month MRR growth. 5 to 10% is typical at seed, 15%+ is exceptional. The model compounds it every month." aria-label="More about this field">?</button></div><div class="in"><span>%</span><input id="growth" type="number" inputmode="decimal" value="6" min="0" max="60" step="0.5" placeholder="0"></div></div>
+          <div class="field"><div class="lr"><label for="margin">Gross margin</label><button type="button" class="help" data-tip="Share of revenue left after the cost of serving customers: hosting, inference, support. SaaS runs 70 to 85%; AI products are often lower once inference is counted. Blank = 80%." aria-label="More about this field">?</button></div><div class="in"><span>%</span><input id="margin" type="number" inputmode="numeric" value="75" min="0" max="100" step="1" placeholder="80"></div></div>
+          <div class="field"><div class="lr"><label for="infer">Of spend, inference / model APIs</label><button type="button" class="help" data-tip="Your monthly bill for OpenAI, Anthropic, GPUs and similar. Used to show how gross margin changes when inference is booked as cost of revenue instead of R&D." aria-label="More about this field">?</button></div><div class="in"><span>$</span><input id="infer" type="number" inputmode="numeric" value="12000" min="0" step="500" placeholder="0"></div></div>
+        </fieldset>
+        <fieldset>
+          <legend>Team <em>optional</em></legend>
+          <div class="field"><div class="lr"><label for="hires">Planned hires</label><button type="button" class="help" data-tip="Full-time hires you expect to make in the next six months." aria-label="More about this field">?</button></div><div class="in"><span>#</span><input id="hires" type="number" inputmode="numeric" value="2" min="0" step="1" placeholder="0"></div></div>
+          <div class="field"><div class="lr"><label for="start">Starting in month</label><button type="button" class="help" data-tip="The month their salaries start hitting the account. M0 is this month, M2 is two months from now." aria-label="More about this field">?</button></div><div class="in"><span>M</span><input id="start" type="number" inputmode="numeric" value="2" min="0" max="24" step="1" placeholder="0"></div></div>
+          <div class="field"><div class="lr"><label for="loaded">Loaded cost per hire, yearly</label><button type="button" class="help" data-tip="Salary plus payroll taxes, benefits and equipment, usually 1.2 to 1.3× base. $150k is a common seed-stage engineer. Blank = $150k." aria-label="More about this field">?</button></div><div class="in"><span>$</span><input id="loaded" type="number" inputmode="numeric" value="150000" min="0" step="5000" placeholder="150000"></div></div>
+          <div class="field"><div class="lr"><label for="states">States with employees</label><button type="button" class="help" data-tip="Number of US states you'll have W-2 employees in. Each state means its own employer registration and quarterly filings." aria-label="More about this field">?</button></div><div class="in"><span>#</span><input id="states" type="number" inputmode="numeric" value="1" min="1" max="50" step="1" placeholder="1"></div></div>
+        </fieldset>
+        <fieldset>
+          <legend>Entity</legend>
+          <div class="checks">
+            <label><input id="de" type="checkbox" checked> Delaware C-corp</label><button type="button" class="help" data-tip="Check if the company is incorporated in Delaware. Triggers the March 1 franchise tax and annual report." aria-label="More about this field">?</button>
+            <label><input id="foreign" type="checkbox"> Foreign founder or shareholder</label><button type="button" class="help right" data-tip="Any non-US founder, or any non-US person or entity owning 25% or more. Triggers Form 5472 with the return and possibly FBAR." aria-label="More about this field">?</button>
+          </div>
+          <p class="hint">Example numbers are shown; replace them with yours. Nothing you type leaves your browser. We record only that a check happened and the rounded result.</p>
+        </fieldset>
+      </form>
+    </div>
+
+    <div class="kpis" aria-live="polite">
+      <div class="kpi hero">
+        <span class="l">Runway, base case<button type="button" class="help" data-tip="Months until cash hits zero on the base path, using your growth rate and hire timing. Fractional: 10.3 means ten months and about nine days." aria-label="More about this field">?</button></span>
+        <span class="v"><span id="k-months">—</span><small>months</small></span>
+        <span id="k-grade" class="pill ok">—</span>
+        <span class="sub" id="k-zero">—</span>
+      </div>
+      <div class="kpi">
+        <span class="l">Start raising by<button type="button" class="help" data-tip="Zero-cash date minus six months. Seed rounds take three to six months to close; start later and you negotiate from weakness." aria-label="More about this field">?</button></span>
+        <span class="v" id="k-raise">—</span>
+        <span class="sub">Six months before zero cash, base case</span>
+      </div>
+      <div class="kpi">
+        <span class="l">Net burn this month<button type="button" class="help" data-tip="Cash out minus cash in this month: spend, plus hires already in seat, minus MRR × gross margin. Default alive means growth reaches break-even before cash runs out." aria-label="More about this field">?</button></span>
+        <span class="v" id="k-burn">—</span>
+        <span class="sub" id="k-alive">—</span>
+      </div>
+      <div class="kpi" style="grid-column:1/-1">
+        <span class="l">Burn multiple<button type="button" class="help" data-tip="Net burn divided by net new ARR added this month. Under 1 is efficient, 1 to 2 is normal at seed, over 2 means each dollar of ARR is expensive." aria-label="More about this field">?</button></span>
+        <span class="v" id="k-bm">—</span>
+        <span class="sub" id="k-bm-sub">Net burn ÷ net new ARR</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel chartcard rc-wide">
+    <div class="top">
+      <div><h2>Cash over the next 24 months<button type="button" class="help" data-tip="Each line is projected cash at the start of each month. A line stops where cash hits zero. The dashed vertical line marks six months before the base case runs out: when to start raising." aria-label="More about this field">?</button></h2><p class="label" style="margin-top:6px">Hover for month by month</p></div>
+      <div class="legend"><span><i class="base"></i>Base</span><span><i class="cons"></i>Conservative</span><span><i class="opt"></i>Optimistic</span></div>
+    </div>
+    <svg class="chart" id="chart" viewBox="0 0 760 300" role="img" aria-label="Projected cash balance by month under three scenarios"></svg>
+    <div class="tip" id="tip"></div>
+  </div>
+
+  <div class="rc-two">
+    <div class="panel">
+      <h2>Three ways it could go<button type="button" class="help" data-tip="Base uses your inputs. Conservative assumes 0% growth and hires starting now. Optimistic assumes growth × 1.5 and hires two months later. Real outcomes usually land between conservative and base." aria-label="More about this field">?</button></h2>
+      <div class="tablewrap"><table id="scen">
+        <thead><tr><th>Scenario</th><th>Assumes</th><th>Runway</th><th>Zero cash</th><th>Raise by</th></tr></thead>
+        <tbody></tbody>
+      </table></div>
+      <p id="ai-note" class="foot"></p>
+    </div>
+    <div class="panel">
+      <h2>Deadlines you're probably carrying<button type="button" class="help right" data-tip="General rules for a US C-corp, dated from today. Days count down to the next occurrence. Not advice for your specific situation; your tax professional confirms." aria-label="More about this field">?</button></h2>
+      <ul class="deadlines" id="deadlines"></ul>
+      <form class="email" id="emailform">
+        <label for="em" style="position:absolute;left:-9999px">Email</label>
+        <input id="em" type="email" placeholder="you@startup.com" autocomplete="email" required>
+        <button class="btn" type="submit" id="send">Send me this as a PDF</button>
+      </form>
+      <p class="email-note" id="email-note">We email you this page as a PDF within a day, and nothing else unless you ask.</p>
+    </div>
+  </div>
+
+  <div class="rc-actions">
+    <a class="btn" id="cta-app" href="https://app.usepren.com/start?plan=pren">See your real runway from your bank</a>
+    <button class="btn ghost" type="button" id="print">Print or save as PDF</button>
+    <button class="btn ghost" type="button" id="copy">Copy a link to these numbers</button>
+  </div>
+
+  <details class="how">
+    <summary>How this is calculated</summary>
+    <ul>
+      <li>Each month: cash − gross spend − hires in seat × (loaded cost ÷ 12) + MRR × (1 + growth)^month × gross margin.</li>
+      <li>Conservative: growth 0%, hires start now. Optimistic: growth × 1.5, hires start two months later. Base: your inputs.</li>
+      <li>Burn multiple = net burn ÷ net new ARR added this month. Under 1 is strong, 1 to 2 is normal at seed, over 2 needs a reason.</li>
+      <li>"Default alive" means revenue growth reaches break-even before cash runs out on the base path.</li>
+      <li>Deadlines are the general rule for a US C-corp, not advice for your case. Delaware franchise tax: the assumed par value method usually gives the $400 minimum for a typical startup; the default notice uses the authorized shares method and is usually far higher.</li>
+    </ul>
+  </details>
+</div></section>
+
+<section class="cta"><div class="wrap cta-row"><h2>Want this from your real bank data, every day?</h2><a class="btn" id="cta-app-2" href="https://app.usepren.com/start?plan=pren">Get started with Pren</a></div></section>
+</main>
+<footer class="site">
+  <div class="cols">
+    <div><a class="wordmark" href="/" aria-label="Pren home">pren.</a><p class="note" style="margin-top:12px">Startup accounting. Automated with AI.</p></div>
+    <div><h4>Services</h4><ul><li><a href="/services/accounting/">Monthly bookkeeping</a></li><li><a href="/services/taxes/">Business taxes</a></li><li><a href="/services/payroll/">Payroll, bills &amp; invoices</a></li><li><a href="/services/cash-planning/">Cash planning</a></li><li><a href="/services/fundraising-readiness/">Board &amp; fundraising reports</a></li></ul></div>
+    <div><h4>Company</h4><ul><li><a href="/runway/">Runway check</a></li><li><a href="/pricing/">Pricing</a></li><li><a href="/about/">About</a></li><li><a href="/contact/">Contact</a></li><li><a href="https://app.usepren.com/">Sign in</a></li></ul></div>
+    <div><h4>Legal</h4><ul><li><a href="/legal/privacy/">Privacy</a></li><li><a href="/legal/terms/">Terms</a></li></ul></div>
+  </div>
+  <p class="note">© 2026 Pren. 501 Folsom Street, San Francisco, CA 94105. This page is a general calculation, not tax or financial advice for your situation. Your exact scope and price are shown in the app before you accept anything.</p>
+</footer>
+
+<script>
+(function(){
+  const $=id=>document.getElementById(id);
+  const money=n=>'$'+Math.round(n).toLocaleString('en-US');
+  const compact=n=>{const a=Math.abs(n);return (n<0?'−':'')+(a>=1e6?(a/1e6).toFixed(1)+'M':a>=1e3?Math.round(a/1e3)+'K':Math.round(a));};
+  const MONTHS=24;
+  const now=new Date(); const TODAY=new Date(now.getFullYear(),now.getMonth(),now.getDate());
+  const mlabel=i=>{const d=new Date(TODAY.getFullYear(),TODAY.getMonth()+i,1);return d.toLocaleString('en-US',{month:'short'})+' '+d.getFullYear().toString().slice(2)};
+  const mdate=i=>{const d=new Date(TODAY.getFullYear(),TODAY.getMonth()+i,1);return d.toLocaleString('en-US',{month:'short',year:'numeric'})};
+  const IDS=['cash','spend','mrr','growth','margin','infer','hires','start','loaded','states'];
+
+  // analytics: PostHog is loaded by the site-wide snippet; every call is guarded so an ad blocker changes nothing
+  const ph=()=>(window.posthog&&typeof window.posthog.capture==='function')?window.posthog:null;
+  const track=(ev,props)=>{const p=ph(); if(p) try{p.capture(ev,props);}catch(e){}};
+  const band=n=>n<100000?'<100k':n<500000?'100k-500k':n<1000000?'500k-1m':n<3000000?'1m-3m':'3m+';
+  const burnBand=n=>n<=0?'none':n<25000?'<25k':n<75000?'25k-75k':n<150000?'75k-150k':'150k+';
+
+  // URL state: ?cash=…&spend=… reproduces a result; written on every change, read once at load
+  function fromUrl(){
+    const q=new URLSearchParams(location.search); let any=false;
+    IDS.forEach(id=>{ if(q.has(id)){ $(id).value=q.get(id); any=true; } });
+    if(q.has('de')) $('de').checked=q.get('de')==='1';
+    if(q.has('foreign')) $('foreign').checked=q.get('foreign')==='1';
+    return any;
+  }
+  function toUrl(){
+    // keep whatever else is on the URL (utm_* from a campaign link) so attribution survives edits
+    const q=new URLSearchParams(location.search);
+    [...IDS,'de','foreign'].forEach(id=>q.delete(id));
+    IDS.forEach(id=>{ if($(id).value!=='') q.set(id,$(id).value); });
+    q.set('de',$('de').checked?'1':'0'); q.set('foreign',$('foreign').checked?'1':'0');
+    return location.origin+location.pathname+'?'+q.toString();
+  }
+
+  function read(){
+    const v=(id,d=0)=>{const el=$(id); return el.value===''? d : (+el.value||0);};
+    return {cash:v('cash'), spend:v('spend'), mrr:v('mrr'), g:v('growth')/100, m:v('margin',80)/100, infer:v('infer'),
+      hires:v('hires'), start:v('start'), loaded:v('loaded',150000), states:Math.max(1,v('states',1)),
+      de:$('de').checked, foreign:$('foreign').checked};
+  }
+  // simulate one path; returns {series[], runway(months, may be >MONTHS), zeroMonth|null, aliveMonth|null}
+  function sim(p,g,start){
+    const s=[p.cash]; let cash=p.cash, zero=null, alive=null;
+    for(let t=0;t<60;t++){
+      const rev=p.mrr*Math.pow(1+g,t)*p.m;
+      const hire=(t>=start?p.hires:0)*p.loaded/12;
+      const net=rev-p.spend-hire;
+      if(alive===null&&net>=0&&cash>0) alive=t;
+      const next=cash+net;
+      if(zero===null&&next<=0){ zero=t+ (net<0? cash/(-net):1); }
+      cash=Math.max(next,0);
+      if(t<MONTHS) s.push(cash);
+      if(cash<=0&&t>=MONTHS) break;
+    }
+    return {series:s, runway: zero===null?Infinity:zero, zeroMonth:zero, aliveMonth:alive};
+  }
+  function grade(mo){
+    if(mo>=18)return['good','Healthy','Room to raise on your terms.'];
+    if(mo>=12)return['ok','On track','Standard seed runway. Open the next raise around month 9.'];
+    if(mo>=6)return['warn','Tight','Under a year once hires land. Hire later or raise sooner.'];
+    return['bad','Critical','Under six months. This number belongs on your desk every Monday.'];
+  }
+  function fmtRunway(r){return r===Infinity?'36+':r.toFixed(1)}
+  function raiseBy(r){ if(r===Infinity) return 'Not forced'; const i=Math.max(0,Math.floor(r-6)); return mdate(i); }
+
+  function draw(paths){
+    const svg=$('chart'); const W=760,H=300,L=58,R=104,T=18,B=34;
+    const iw=W-L-R, ih=H-T-B;
+    const maxV=Math.max(...paths.map(p=>Math.max(...p.series)))||1;
+    const step=Math.pow(10,Math.floor(Math.log10(maxV))); let tick=step; while(maxV/tick>5) tick*=2; while(maxV/tick<2.5) tick/=2;
+    const yMax=Math.ceil(maxV/tick)*tick;
+    const x=i=>L+iw*i/MONTHS, y=v=>T+ih*(1-v/yMax);
+    let out='';
+    for(let v=0;v<=yMax+1e-9;v+=tick){ out+=`<line class="grid" x1="${L}" x2="${W-R}" y1="${y(v)}" y2="${y(v)}"/><text x="${L-8}" y="${y(v)+4}" text-anchor="end">${compact(v)}</text>`; }
+    out+=`<line class="axis" x1="${L}" x2="${W-R}" y1="${y(0)}" y2="${y(0)}"/>`;
+    for(let i=0;i<=MONTHS;i+=6){ out+=`<text x="${x(i)}" y="${H-10}" text-anchor="middle">${i===0?'Now':mlabel(i)}</text>`; }
+    const base=paths[0];
+    const pts=(p)=>{const out=[]; const z=p.runway; for(let i=0;i<=MONTHS;i++){ if(z!==Infinity&&i>z){ out.push([z,0]); break;} out.push([i,p.series[i]]); } return out;};
+    const pt=(p)=>pts(p).map(([i,v])=>`${x(i)},${y(v)}`).join(' ');
+    const endOf=(p)=>{const a=pts(p); return a[a.length-1];};
+    out+=`<polygon class="wash" points="${x(0)},${y(0)} ${pt(base)} ${x(MONTHS)},${y(0)}"/>`;
+    if(base.runway!==Infinity&&base.runway-6>0&&base.runway-6<MONTHS){const rx=x(base.runway-6); out+=`<line class="raise" x1="${rx}" x2="${rx}" y1="${T}" y2="${y(0)}"/><text class="lbl" x="${rx+5}" y="${T+12}">Start raising</text>`;}
+    [...paths].reverse().forEach(p=>{out+=`<polyline class="ln ${p.cls}" points="${pt(p)}"/>`;});
+    const ends=paths.map(p=>{const [ei,ev]=endOf(p); return {p,ei,ex:x(ei),ey:y(ev),alive:p.runway===Infinity,txt: p.runway===Infinity? `${p.name} ${compact(ev)}` : `${p.name} · ${mdate(Math.floor(p.runway))}`};});
+    const right=ends.filter(e=>e.alive).sort((a,b)=>a.ey-b.ey); const dead=ends.filter(e=>!e.alive).sort((a,b)=>b.ei-a.ei);
+    right.forEach((e,i)=>{e.lx=x(MONTHS)+18; e.ly=e.ey; if(i>0&&e.ly-right[i-1].ly<14) e.ly=right[i-1].ly+14;});
+    dead.forEach((e,i)=>{e.lx=Math.min(e.ex+10, W-R-10); e.ly=y(0)-14-i*15; e.anchor= e.ex>W-R-90?'end':'start'; if(e.anchor==='end') e.lx=e.ex-10;});
+    ends.forEach(e=>{const p=e.p; out+=`<circle class="dot ${p.cls}" cx="${e.ex}" cy="${e.ey}" r="4.5"/>`;
+      if(e.alive&&Math.abs(e.ly-e.ey)>2) out+=`<line class="axis" x1="${e.ex+6}" x2="${e.lx-4}" y1="${e.ey}" y2="${e.ly}"/>`;
+      if(!e.alive) out+=`<line class="axis" x1="${e.ex}" x2="${e.ex}" y1="${e.ey-6}" y2="${e.ly+4}"/>`;
+      out+=`<text class="lbl" x="${e.lx}" y="${e.ly+4}" text-anchor="${e.anchor||'start'}">${e.txt}</text>`;});
+    out+=`<line class="cross" id="cross" x1="0" x2="0" y1="${T}" y2="${y(0)}"/><rect id="hit" x="${L}" y="${T}" width="${iw}" height="${ih}" fill="transparent"/>`;
+    svg.innerHTML=out;
+    const tip=$('tip'), cross=svg.querySelector('#cross'), hit=svg.querySelector('#hit'), card=svg.parentElement;
+    function move(ev){
+      const r=svg.getBoundingClientRect(); const px=(ev.clientX-r.left)*(W/r.width);
+      const i=Math.max(0,Math.min(MONTHS,Math.round((px-L)/iw*MONTHS)));
+      cross.setAttribute('x1',x(i)); cross.setAttribute('x2',x(i)); cross.style.opacity=1;
+      tip.innerHTML=`<b>${i===0?'Now':mdate(i)}</b>`+paths.map(p=>`${p.name}: ${p.runway!==Infinity&&i>p.runway?'out of cash':money(p.series[i])}`).join('<br>');
+      const cr=card.getBoundingClientRect(); const sx=r.width/W;
+      tip.style.left=(r.left-cr.left+x(i)*sx)+'px'; tip.style.top=(r.top-cr.top+y(base.series[i])*sx)+'px'; tip.style.opacity=1;
+    }
+    hit.addEventListener('mousemove',move); hit.addEventListener('touchmove',e=>{move(e.touches[0])},{passive:true});
+    hit.addEventListener('mouseleave',()=>{tip.style.opacity=0;cross.style.opacity=0});
+  }
+
+  let last=null;
+  function run(){
+    const p=read();
+    const base=Object.assign(sim(p,p.g,p.start),{name:'Base',cls:'base'});
+    const cons=Object.assign(sim(p,0,0),{name:'Conservative',cls:'cons'});
+    const opt =Object.assign(sim(p,p.g*1.5,p.start+2),{name:'Optimistic',cls:'opt'});
+    const simple=(p.g===0&&p.hires===0);
+    const paths=simple?[base]:[base,cons,opt];
+    document.querySelector('.legend').hidden=simple;
+    $('k-months').textContent=fmtRunway(base.runway);
+    const [cls,txt,why]=grade(base.runway===Infinity?99:base.runway);
+    const g=$('k-grade'); g.className='pill '+cls; g.textContent=txt;
+    $('k-zero').textContent=base.runway===Infinity?'Cash never hits zero on this path. '+why:`Zero cash around ${mdate(Math.floor(base.runway))}. ${why}`;
+    $('k-raise').textContent=raiseBy(base.runway);
+    const hireNow=(p.start<=0?p.hires:0)*p.loaded/12;
+    const netBurn=p.spend+hireNow-p.mrr*p.m;
+    $('k-burn').textContent=(netBurn<0?'+':'')+compact(Math.abs(netBurn)).replace(/^−/,'');
+    $('k-alive').textContent= base.aliveMonth!==null && (base.runway===Infinity||base.aliveMonth<base.runway) ? `Default alive: break-even around ${mdate(base.aliveMonth)}` : 'Default dead: needs a raise or a cut before break-even';
+    const newARR=p.mrr*p.g*12;
+    if(newARR>0&&netBurn>0){const bm=netBurn/newARR; $('k-bm').textContent=bm.toFixed(1)+'×'; $('k-bm-sub').textContent=bm<1?'Under 1: efficient growth':bm<=2?'1 to 2: normal at seed':'Over 2: every $ of ARR costs $'+bm.toFixed(1);}
+    else {$('k-bm').textContent=netBurn<=0?'0×':'n/a'; $('k-bm-sub').textContent=netBurn<=0?'Not burning':'Needs MRR growth above 0%';}
+    draw(paths);
+    const rows=simple?[[base,'No revenue growth or hires entered']]:[[base,`${(p.g*100).toFixed(1)}% growth, hires in M${p.start}`],[cons,'0% growth, hires now'],[opt,`${(p.g*150).toFixed(1)}% growth, hires in M${p.start+2}`]];
+    $('scen').querySelector('tbody').innerHTML=rows.map(([s,a])=>`<tr><td><span class="key ${s.cls}"></span>${s.name}</td><td>${a}</td><td class="num">${fmtRunway(s.runway)} mo</td><td class="num">${s.runway===Infinity?'—':mdate(Math.floor(s.runway))}</td><td class="num">${raiseBy(s.runway)}</td></tr>`).join('');
+    const ai=$('ai-note');
+    if(p.infer>0&&p.mrr>0){const adj=(p.mrr*p.m-p.infer)/p.mrr; const tail= adj>0 ? `it reads ${Math.round(adj*100)}%.` : `it goes negative: each $1 of revenue costs more than $1 to serve.`; ai.textContent=`Inference is ${Math.round(p.infer/Math.max(p.spend,1)*100)}% of spend. Booked as R&D your gross margin reads ${Math.round(p.m*100)}%; booked as cost of revenue, where customer-serving inference belongs, ${tail} Investors check this in diligence.`;}
+    else if(p.infer>0){ai.textContent=`Inference is ${Math.round(p.infer/Math.max(p.spend,1)*100)}% of spend with no revenue yet. Track it by product from day one; it becomes cost of revenue the day you charge.`;}
+    else ai.textContent= simple ? 'Add MRR growth or planned hires above to see conservative and optimistic paths.' : '';
+    // deadlines, dated from today
+    const dl=[]; const yr=TODAY.getFullYear();
+    const next=(m,d)=>{let dt=new Date(yr,m-1,d); if(dt<TODAY) dt=new Date(yr+1,m-1,d); const days=Math.round((dt-TODAY)/864e5); return [dt.toLocaleString('en-US',{month:'short',day:'numeric',year:'numeric'}),days,dt];};
+    if(p.de){const [d,n]=next(3,1); dl.push([d,n,'Delaware franchise tax and annual report. File with the assumed par value method; the default notice uses authorized shares and is usually far higher.']);}
+    {const [d,n]=next(4,15); dl.push([d,n,'Federal return (Form 1120), or Oct 15 with an extension. Most state returns share the date; California adds the $800 minimum franchise tax with Form 100.']);}
+    if(p.foreign){const [d,n]=next(4,15); dl.push([d,n,'Form 5472 for each foreign shareholder, filed with the return. Penalty starts at $25,000 per form, per year.']); dl.push([d,n,'FBAR if any foreign account passed $10,000 at any point in the year.']);}
+    {const [d,n,dt]=next(1,31); const payYear=dt.getFullYear()-1; const thr=payYear<=2025?'$600':'$2,000'; dl.push([d,n,`1099-NEC for every US contractor paid ${thr} or more in ${payYear}.`]);}
+    if(p.hires>0){dl.push([`Before M${p.start} payroll`,null,`Employer registration in each hire's state. ${p.states>1?p.states+' states means '+p.states+' registrations, two':'Two'} to six weeks of lead time.`]);}
+    if(p.states>1){dl.push(['Quarterly',null,`State withholding and unemployment filings in ${p.states} states.`]);}
+    dl.sort((a,b)=>(a[1]??999)-(b[1]??999));
+    $('deadlines').innerHTML=dl.map(([d,n,t])=>`<li><span class="d ${n!==null&&n<75?'soon':''}">${d}${n!==null?`<br>${n} days`:''}</span><span>${t}</span></li>`).join('');
+    last={months: base.runway===Infinity?36:Math.round(base.runway*10)/10, grade: txt, cash_band: band(p.cash), burn_band: burnBand(netBurn), scenarios: paths.length, has_revenue: p.mrr>0, planned_hires: p.hires, delaware: p.de, foreign_owner: p.foreign};
+    try{ history.replaceState(null,'',toUrl()); }catch(e){}
+  }
+
+  // one runway_calculated per pause in typing, not per keystroke
+  let timer=null, calcCount=0;
+  function scheduleTrack(){ clearTimeout(timer); timer=setTimeout(()=>{ if(last){ calcCount++; track('runway_calculated',Object.assign({edit_number:calcCount},last)); } },1200); }
+  [...IDS,'de','foreign'].forEach(id=>$(id).addEventListener('input',()=>{run(); scheduleTrack();}));
+  window.addEventListener('resize',()=>run());
+
+  $('emailform').addEventListener('submit',e=>{
+    e.preventDefault();
+    const em=$('em').value.trim(); if(!em) return;
+    const p=ph(); const note=$('email-note');
+    if(p){ try{ p.identify(em,{email:em}); }catch(err){} track('runway_email_captured',Object.assign({share_url:toUrl()},last||{})); note.textContent='Got it. We will email the PDF to '+em+' within a day.'; }
+    else { note.textContent='Your browser blocked our analytics script, so this form cannot reach us. Email zoe@usepren.com with the link from "Copy a link" and we will send the PDF.'; }
+    $('send').disabled=true; $('send').textContent='Sent';
+  });
+  $('print').addEventListener('click',()=>{ track('runway_print_clicked',last||{}); window.print(); });
+  $('copy').addEventListener('click',()=>{ const url=toUrl(); const b=$('copy'); const done=()=>{ b.textContent='Link copied'; setTimeout(()=>b.textContent='Copy a link to these numbers',1800); }; if(navigator.clipboard) navigator.clipboard.writeText(url).then(done,()=>prompt('Copy this link',url)); else prompt('Copy this link',url); track('runway_link_copied',last||{}); });
+  ['cta-app','cta-app-2'].forEach(id=>$(id).addEventListener('click',()=>track('runway_app_cta_clicked',Object.assign({placement:id},last||{}))));
+
+  const prefilled=fromUrl();
+  run();
+  if(prefilled) track('runway_link_opened',last||{});
+})();
+</script>
+</body>
+</html>
