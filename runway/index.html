@@ -140,9 +140,11 @@
   .btn.ghost{background:transparent;color:var(--ink);border:1px solid var(--ink)}
   .btn.ghost:hover{background:var(--wash)}
   .gated{position:relative}
-  .gated .locked{filter:blur(7px);pointer-events:none;user-select:none;opacity:.55}
-  .gate{position:absolute;inset:0;display:flex;align-items:flex-start;justify-content:center;padding-top:clamp(24px,6vw,72px);z-index:3}
-  .gate-box{background:var(--paper);border:1px solid var(--ink);padding:clamp(22px,3vw,32px);max-width:460px;width:calc(100% - 32px);box-shadow:0 12px 40px #17252226}
+  .locked .blur{filter:blur(7px);pointer-events:none;user-select:none;opacity:.6}
+  .gate{margin-top:40px;display:flex;justify-content:flex-start}
+  .gate-box{background:var(--paper);border:1px solid var(--ink);padding:clamp(22px,3vw,32px);max-width:560px;width:100%}
+  .locked .teaser{font-size:14px;color:var(--ink);margin-top:8px}
+  .section-label{margin:40px 0 12px}
   .gate-box h2{font-size:24px;letter-spacing:-.03em;margin-bottom:8px}
   .gate-box p{color:var(--muted);font-size:14px;line-height:1.55}
   .gate-box ul.checks{margin-top:14px;font-size:14px;gap:8px}
@@ -150,7 +152,7 @@
   .gate-box .consent{display:flex;gap:10px;align-items:flex-start;margin-top:14px;font-size:13px;color:var(--ink);line-height:1.5}
   .gate-box .consent input{accent-color:var(--accent);width:16px;height:16px;flex:none;margin-top:2px}
   .email-note a{color:var(--accent)}
-  .unlocked .locked{filter:none;pointer-events:auto;user-select:auto;opacity:1}
+  .unlocked .locked .blur{filter:none;pointer-events:auto;user-select:auto;opacity:1}
   .unlocked .gate{display:none}
   .thanks{margin-top:24px;padding:14px 16px;background:var(--wash);font-size:14px;line-height:1.55}
   details.how{margin-top:24px}
@@ -232,11 +234,10 @@
   </div>
 
   <div class="gated" id="gated">
-  <div class="gate" id="gate">
+  <div class="gate" id="gate" aria-label="Unlock the full result">
     <div class="gate-box">
-      <h2>See the full result</h2>
-      <p>Your runway is above. The rest is where the decisions are:</p>
-      <ul class="checks"><li>When to start raising, and the month cash runs out</li><li>Cash over the next 24 months in three scenarios</li><li>Your burn multiple and gross margin after inference</li><li>The tax deadlines your company is carrying, with days left</li></ul>
+      <h2>See your predictions and deadlines</h2>
+      <p>Your runway is above. Below, blurred until you enter an email: when to start raising, cash over 24 months in three scenarios, your burn multiple, and the tax deadlines your company is carrying, with days left.</p>
       <form class="email" id="emailform">
         <label for="em" style="position:absolute;left:-9999px">Email</label>
         <input id="em" type="email" placeholder="you@startup.com" autocomplete="email" required>
@@ -247,16 +248,17 @@
     </div>
   </div>
   <div class="locked" id="locked">
-  <div class="kpis rc-wide">
+  <p class="label section-label">Predictions</p>
+  <div class="kpis">
       <div class="kpi">
         <span class="l">Start raising by<button type="button" class="help" data-tip="Zero-cash date minus six months. Seed rounds take three to six months to close; start later and you negotiate from weakness." aria-label="More about this field">?</button></span>
-        <span class="v" id="k-raise">—</span>
-        <span class="sub">Six months before zero cash, base case</span>
+        <span class="v blur" id="k-raise">—</span>
+        <span class="sub blur">Six months before zero cash, base case</span>
       </div>
       <div class="kpi">
         <span class="l">Burn multiple<button type="button" class="help" data-tip="Net burn divided by net new ARR added this month. Under 1 is efficient, 1 to 2 is normal at seed, over 2 means each dollar of ARR is expensive." aria-label="More about this field">?</button></span>
-        <span class="v" id="k-bm">—</span>
-        <span class="sub" id="k-bm-sub">Net burn ÷ net new ARR</span>
+        <span class="v blur" id="k-bm">—</span>
+        <span class="sub blur" id="k-bm-sub">Net burn ÷ net new ARR</span>
       </div>
   </div>
 
@@ -265,22 +267,27 @@
       <div><h2>Cash over the next 24 months<button type="button" class="help" data-tip="Each line is projected cash at the start of each month. A line stops where cash hits zero. The dashed vertical line marks six months before the base case runs out: when to start raising." aria-label="More about this field">?</button></h2><p class="label" style="margin-top:6px">Hover for month by month</p></div>
       <div class="legend"><span><i class="base"></i>Base</span><span><i class="cons"></i>Conservative</span><span><i class="opt"></i>Optimistic</span></div>
     </div>
+    <div class="blur">
     <svg class="chart" id="chart" viewBox="0 0 760 300" role="img" aria-label="Projected cash balance by month under three scenarios"></svg>
     <div class="tip" id="tip"></div>
+    </div>
   </div>
 
   <div class="rc-two">
     <div class="panel">
       <h2>Three ways it could go<button type="button" class="help" data-tip="Base uses your inputs. Conservative assumes 0% growth and hires starting now. Optimistic assumes growth × 1.5 and hires two months later. Real outcomes usually land between conservative and base." aria-label="More about this field">?</button></h2>
+      <div class="blur">
       <div class="tablewrap"><table id="scen">
         <thead><tr><th>Scenario</th><th>Assumes</th><th>Runway</th><th>Zero cash</th><th>Raise by</th></tr></thead>
         <tbody></tbody>
       </table></div>
       <p id="ai-note" class="foot"></p>
+      </div>
     </div>
     <div class="panel">
       <h2>Deadlines you're probably carrying<button type="button" class="help right" data-tip="General rules for a US C-corp, dated from today. Days count down to the next occurrence. Not advice for your specific situation; your tax professional confirms." aria-label="More about this field">?</button></h2>
-      <ul class="deadlines" id="deadlines"></ul>
+      <p class="teaser" id="dl-teaser"></p>
+      <div class="blur"><ul class="deadlines" id="deadlines"></ul></div>
     </div>
   </div>
   </div>
@@ -462,6 +469,7 @@
     if(p.hires>0){dl.push([`Before M${p.start} payroll`,null,`Employer registration in each hire's state. ${p.states>1?p.states+' states means '+p.states+' registrations, two':'Two'} to six weeks of lead time.`]);}
     if(p.states>1){dl.push(['Quarterly',null,`State withholding and unemployment filings in ${p.states} states.`]);}
     dl.sort((a,b)=>(a[1]??999)-(b[1]??999));
+    { const dated=dl.filter(x=>x[1]!==null); const soon=dated[0]; $('dl-teaser').textContent = dated.length ? `${dl.length} deadlines for a company like yours. The next one is in ${soon[1]} days.` : ''; }
     $('deadlines').innerHTML=dl.map(([d,n,t])=>`<li><span class="d ${n!==null&&n<75?'soon':''}">${d}${n!==null?`<br>${n} days`:''}</span><span>${t}</span></li>`).join('');
     const dated=dl.filter(x=>x[1]!==null);
     last={months: base.runway===Infinity?36:Math.round(base.runway*10)/10, grade: txt, cash_band: band(p.cash), burn_band: burnBand(netBurn),
