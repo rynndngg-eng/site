@@ -204,7 +204,7 @@
         <fieldset>
           <div class="field"><div class="lr"><label for="mrr">MRR</label><button type="button" class="help" data-tip="Monthly recurring revenue billed this month. Leave blank if pre-revenue. One-off pilots and services don't count." aria-label="More about this field">?</button></div><div class="in"><span>$</span><input id="mrr" type="number" inputmode="numeric" min="0" step="500" placeholder="0"></div></div>
           <div class="field"><div class="lr"><label for="growth">MRR growth per month</label><button type="button" class="help" data-tip="Month-over-month MRR growth. 5 to 10% is typical at seed, 15%+ is exceptional. The model compounds it every month." aria-label="More about this field">?</button></div><div class="in"><span>%</span><input id="growth" type="number" inputmode="decimal" min="0" max="60" step="0.5" placeholder="0"></div></div>
-          <div class="field"><div class="lr"><label for="margin">Gross margin</label><button type="button" class="help" data-tip="Share of revenue left after the cost of serving customers: hosting, inference, support. SaaS runs 70 to 85%; AI products are often lower once inference is counted. Blank = 80%." aria-label="More about this field">?</button></div><div class="in"><span>%</span><input id="margin" type="number" inputmode="numeric" min="0" max="100" step="1" placeholder="80"></div></div>
+          <div class="field"><div class="lr"><label for="margin">Gross margin before inference</label><button type="button" class="help" data-tip="Share of revenue left after the cost of serving customers, not counting inference: hosting, support, payment fees. SaaS runs 70 to 85%. Used only for revenue you add through growth; today's costs are already in your spend. Blank = 80%." aria-label="More about this field">?</button></div><div class="in"><span>%</span><input id="margin" type="number" inputmode="numeric" min="0" max="100" step="1" placeholder="80"></div></div>
           <div class="field"><div class="lr"><label for="infer">Inference / model APIs per month</label><button type="button" class="help" data-tip="Your monthly bill for OpenAI, Anthropic, GPUs and similar. Used to show how gross margin changes when inference is booked as cost of revenue instead of R&D." aria-label="More about this field">?</button></div><div class="in"><span>$</span><input id="infer" type="number" inputmode="numeric" min="0" step="500" placeholder="0"></div></div>
         </fieldset>
         </details>
@@ -322,8 +322,8 @@
   <details class="how">
     <summary>How this is calculated</summary>
     <ul>
-      <li>Each month: cash − gross spend − hires in seat × (loaded cost ÷ 12) + MRR × (1 + growth)^month × gross margin.</li>
-      <li>Conservative: growth 0%, hires start now. Optimistic: growth × 1.5, hires start two months later. Base: your inputs.</li>
+      <li>Each month: cash + MRR × (1 + growth)^month − gross spend − hires in seat × (loaded cost ÷ 12) − (new MRR from growth) × (1 − gross margin). Revenue counts in full because today's cost of serving customers is already inside your spend; only revenue added by growth carries an extra cost of serving.</li>
+      <li>Conservative: spend +10%, growth 0%, hires start now. Optimistic: spend −5%, growth × 1.5, hires start two months later. Base: your inputs.</li>
       <li>Burn multiple = net burn ÷ net new ARR added this month. Under 1 is strong, 1 to 2 is normal at seed, over 2 needs a reason.</li>
       <li>"Default alive" means revenue growth reaches break-even before cash runs out on the base path.</li>
       <li>Deadlines are the general rule for a US C-corp, not advice for your case. Delaware franchise tax: the assumed par value method usually gives the $400 minimum for a typical startup; the default notice uses the authorized shares method and is usually far higher.</li>
@@ -385,12 +385,15 @@
       de:$('de').checked, foreign:$('foreign').checked};
   }
   // simulate one path; returns {series[], runway(months, may be >MONTHS), zeroMonth|null, aliveMonth|null}
-  function sim(p,g,start){
+  // Revenue counts in full: today's cost of serving customers is already inside gross spend.
+  // Only revenue added by growth carries an extra cost of serving, at (1 - gross margin).
+  function sim(p,g,start,spendMul){
     const s=[p.cash]; let cash=p.cash, zero=null, alive=null;
     for(let t=0;t<60;t++){
-      const rev=p.mrr*Math.pow(1+g,t)*p.m;
+      const rev=p.mrr*Math.pow(1+g,t);
+      const newCogs=(rev-p.mrr)*(1-p.m);
       const hire=(t>=start?p.hires:0)*p.loaded/12;
-      const net=rev-p.spend-hire;
+      const net=rev-p.spend*spendMul-hire-newCogs;
       if(alive===null&&net>=0&&cash>0) alive=t;
       const next=cash+net;
       if(zero===null&&next<=0){ zero=t+ (net<0? cash/(-net):1); }
@@ -407,7 +410,7 @@
     return['bad','Critical','Under six months. This number belongs on your desk every Monday.'];
   }
   function fmtRunway(r){return r===Infinity?'36+':r.toFixed(1)}
-  function raiseBy(r){ if(r===Infinity) return 'Not forced'; const i=Math.max(0,Math.floor(r-6)); return mdate(i); }
+  function raiseBy(r){ if(r===Infinity) return 'Not forced'; if(r-6<=0) return 'Now'; return mdate(Math.floor(r-6)); }
 
   function draw(paths){
     const svg=$('chart'); const W=760,H=300,L=58,R=104,T=18,B=34;
@@ -453,31 +456,30 @@
   let last=null;
   function run(){
     const p=read();
-    const base=Object.assign(sim(p,p.g,p.start),{name:'Base',cls:'base'});
-    const cons=Object.assign(sim(p,0,0),{name:'Conservative',cls:'cons'});
-    const opt =Object.assign(sim(p,p.g*1.5,p.start+2),{name:'Optimistic',cls:'opt'});
-    const simple=(p.g===0&&p.hires===0);
-    const paths=simple?[base]:[base,cons,opt];
-    document.querySelector('.legend').hidden=simple;
+    const base=Object.assign(sim(p,p.g,p.start,1),{name:'Base',cls:'base'});
+    const cons=Object.assign(sim(p,0,0,1.10),{name:'Conservative',cls:'cons'});
+    const opt =Object.assign(sim(p,p.g*1.5,p.start+2,0.95),{name:'Optimistic',cls:'opt'});
+    const paths=[base,cons,opt];
     $('k-months').textContent=fmtRunway(base.runway);
     const [cls,txt,why]=grade(base.runway===Infinity?99:base.runway);
     const g=$('k-grade'); g.className='pill '+cls; g.textContent=txt;
     $('k-zero').textContent=base.runway===Infinity?'Cash never hits zero on this path. '+why:`Zero cash around ${mdate(Math.floor(base.runway))}. ${why}`;
     $('k-raise').textContent=raiseBy(base.runway);
     const hireNow=(p.start<=0?p.hires:0)*p.loaded/12;
-    const netBurn=p.spend+hireNow-p.mrr*p.m;
+    const netBurn=p.spend+hireNow-p.mrr;
     $('k-burn').textContent=(netBurn<0?'+':'')+compact(Math.abs(netBurn)).replace(/^−/,'');
     $('k-alive').textContent= base.aliveMonth!==null && (base.runway===Infinity||base.aliveMonth<base.runway) ? `Default alive: break-even around ${mdate(base.aliveMonth)}` : 'Default dead: needs a raise or a cut before break-even';
     const newARR=p.mrr*p.g*12;
     if(newARR>0&&netBurn>0){const bm=netBurn/newARR; $('k-bm').textContent=bm.toFixed(1)+'×'; $('k-bm-sub').textContent=bm<1?'Under 1: efficient growth':bm<=2?'1 to 2: normal at seed':'Over 2: every $ of ARR costs $'+bm.toFixed(1);}
     else {$('k-bm').textContent=netBurn<=0?'0×':'n/a'; $('k-bm-sub').textContent=netBurn<=0?'Not burning':'Needs MRR growth above 0%';}
     draw(paths);
-    const rows=simple?[[base,'No revenue growth or hires entered']]:[[base,`${(p.g*100).toFixed(1)}% growth, hires in M${p.start}`],[cons,'0% growth, hires now'],[opt,`${(p.g*150).toFixed(1)}% growth, hires in M${p.start+2}`]];
+    const hiresTxt=(m)=>p.hires>0?`, ${p.hires} hire${p.hires>1?'s':''} in M${m}`:'';
+    const rows=[[base,`Your numbers: ${(p.g*100).toFixed(1)}% growth${hiresTxt(p.start)}`],[cons,`Spend +10%, 0% growth${p.hires>0?', hires now':''}`],[opt,`Spend −5%, ${(p.g*150).toFixed(1)}% growth${hiresTxt(p.start+2)}`]];
     $('scen').querySelector('tbody').innerHTML=rows.map(([s,a])=>`<tr><td><span class="key ${s.cls}"></span>${s.name}</td><td>${a}</td><td class="num">${fmtRunway(s.runway)} mo</td><td class="num">${s.runway===Infinity?'—':mdate(Math.floor(s.runway))}</td><td class="num">${raiseBy(s.runway)}</td></tr>`).join('');
     const ai=$('ai-note');
-    if(p.infer>0&&p.mrr>0){const adj=(p.mrr*p.m-p.infer)/p.mrr; const tail= adj>0 ? `it reads ${Math.round(adj*100)}%.` : `it goes negative: each $1 of revenue costs more than $1 to serve.`; ai.textContent=`Inference is ${Math.round(p.infer/Math.max(p.spend,1)*100)}% of spend. Booked as R&D your gross margin reads ${Math.round(p.m*100)}%; booked as cost of revenue, where customer-serving inference belongs, ${tail} Investors check this in diligence.`;}
+    if(p.infer>0&&p.mrr>0){const adj=(p.mrr*p.m-p.infer)/p.mrr; const tail= adj>0 ? `it is ${Math.round(adj*100)}%.` : `it goes negative: each $1 of revenue costs more than $1 to serve.`; ai.textContent=`Inference is ${Math.round(p.infer/Math.max(p.spend,1)*100)}% of spend. Before inference your gross margin is ${Math.round(p.m*100)}%; with inference counted as cost of revenue, where customer-serving inference belongs, ${tail} Investors check this in diligence.`;}
     else if(p.infer>0){ai.textContent=`Inference is ${Math.round(p.infer/Math.max(p.spend,1)*100)}% of spend with no revenue yet. Track it by product from day one; it becomes cost of revenue the day you charge.`;}
-    else ai.textContent= simple ? 'Add MRR growth or planned hires above to see conservative and optimistic paths.' : '';
+    else ai.textContent= (p.g===0&&p.hires===0) ? 'Conservative and optimistic here vary spend by +10% and −5%. Add MRR growth or planned hires above to widen the range.' : '';
     // deadlines, dated from today
     const dl=[]; const yr=TODAY.getFullYear();
     const next=(m,d)=>{let dt=new Date(yr,m-1,d); if(dt<TODAY) dt=new Date(yr+1,m-1,d); const days=Math.round((dt-TODAY)/864e5); return [dt.toLocaleString('en-US',{month:'short',day:'numeric',year:'numeric'}),days,dt];};
@@ -494,7 +496,7 @@
     last={months: base.runway===Infinity?36:Math.round(base.runway*10)/10, grade: txt, cash_band: band(p.cash), burn_band: burnBand(netBurn),
       zero_cash_month: base.runway===Infinity?'not within 5 years':mdate(Math.floor(base.runway)), raise_by: raiseBy(base.runway),
       deadline_1_date: dated[0]?dated[0][0]:'', deadline_1_text: dated[0]?dated[0][2]:'', deadline_2_date: dated[1]?dated[1][0]:'', deadline_2_text: dated[1]?dated[1][2]:'',
-      scenarios: paths.length, has_revenue: p.mrr>0, planned_hires: p.hires, delaware: p.de, foreign_owner: p.foreign, unlocked: isUnlocked()};
+      scenarios: 3, has_revenue: p.mrr>0, planned_hires: p.hires, delaware: p.de, foreign_owner: p.foreign, unlocked: isUnlocked()};
     try{ history.replaceState(null,'',toUrl()); }catch(e){}
   }
 
