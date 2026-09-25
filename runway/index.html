@@ -103,12 +103,13 @@
   .pill.warn{background:var(--warn-soft);color:var(--warn)}
   .pill.bad{background:var(--bad-soft);color:var(--bad)}
   .rc-side{display:flex;flex-direction:column;gap:24px;min-width:0}
-  .about-card{border:1px solid var(--line);background:var(--wash);padding:clamp(20px,2.6vw,28px);display:flex;flex-direction:column;gap:10px}
+  .about-card{grid-column:-2/-1;border:1px solid var(--line);background:var(--wash);padding:clamp(20px,2.6vw,28px);display:flex;flex-direction:column;gap:10px}
   .about-card .label{margin-bottom:0}
   .about-card h2{font-size:22px;letter-spacing:-.02em}
   .about-card p{font-size:15px;line-height:1.55}
   .about-card .about-price{color:var(--muted);font-size:13px;font-family:var(--mono)}
-  .about-card .btn{align-self:flex-start;margin-top:6px}
+  .about-card .btn{align-self:flex-start;margin-top:auto}
+  @media (max-width:900px){.about-card{grid-column:auto}}
   .rc-wide{margin-top:24px}
   .chartcard{position:relative}
   .chartcard .top{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:12px}
@@ -157,8 +158,10 @@
   .btn.ghost:hover{background:var(--wash)}
   .gated{position:relative}
   .locked .blur{filter:blur(7px);pointer-events:none;user-select:none;opacity:.6}
-  .gate{margin-top:40px;display:flex;justify-content:flex-start}
-  .gate-box{background:var(--paper);border:1px solid var(--ink);padding:clamp(22px,3vw,32px);max-width:560px;width:100%}
+  .gate-row{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:24px;margin-top:40px;align-items:stretch}
+  @media (max-width:900px){.gate-row{grid-template-columns:minmax(0,1fr)}}
+  .gate{display:flex}
+  .gate-box{background:var(--paper);border:1px solid var(--ink);padding:clamp(22px,3vw,32px);width:100%}
   .locked .teaser{font-size:14px;color:var(--ink);margin-top:8px}
   .section-label{margin:40px 0 12px}
   .gate-box h2{font-size:24px;letter-spacing:-.03em;margin-bottom:8px}
@@ -254,17 +257,11 @@
         <span class="sub">When to start raising, the 24-month cash curve, three scenarios, your burn multiple and the deadlines you're carrying are below. They unlock with your email.</span>
       </div>
     </div>
-    <aside class="about-card" aria-labelledby="about-title">
-      <p class="label">About Pren</p>
-      <h2 id="about-title">Your books and taxes, handled.</h2>
-      <p>Pren runs your startup's accounting and taxes for one flat price. Our agents prepare, a person reviews, and a licensed preparer signs your return. You stop chasing paperwork.</p>
-      <p class="about-price">From $299 a month. Nothing is charged until service starts.</p>
-      <a class="btn" id="cta-about" href="https://app.usepren.com/start?plan=pren">Start with Pren</a>
-    </aside>
     </div>
   </div>
 
   <div class="gated" id="gated">
+  <div class="gate-row">
   <div class="gate" id="gate" aria-label="Unlock the full result">
     <div class="gate-box">
       <h2>See your predictions and deadlines</h2>
@@ -282,6 +279,14 @@
       </form>
       <p class="email-note" id="code-note" hidden></p>
     </div>
+  </div>
+  <aside class="about-card" aria-labelledby="about-title">
+      <p class="label">About Pren</p>
+      <h2 id="about-title">Your books and taxes, handled.</h2>
+      <p>Pren runs your startup's accounting and taxes for one flat price. Our agents prepare, a person reviews, and a licensed preparer signs your return. You stop chasing paperwork.</p>
+      <p class="about-price">From $299 a month. Nothing is charged until service starts.</p>
+      <a class="btn" id="cta-about" href="https://app.usepren.com/start?plan=pren">Start with Pren</a>
+    </aside>
   </div>
   <div class="locked" id="locked">
   <p class="label section-label">Predictions</p>
