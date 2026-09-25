@@ -61,6 +61,13 @@
   fieldset:last-of-type{margin-bottom:0}
   legend{font:11px/1.5 var(--mono);color:var(--muted);padding:0;margin-bottom:8px;grid-column:1/-1;text-transform:uppercase;letter-spacing:.08em}
   legend em{font-style:normal;color:var(--accent);margin-left:6px;text-transform:none;letter-spacing:0}
+  details.opt{border-top:1px solid var(--line);padding:12px 0 0;margin:0 0 6px}
+  details.opt summary{cursor:pointer;list-style:none;display:flex;align-items:center;justify-content:space-between;gap:12px;font:11px/1.5 var(--mono);color:var(--muted);text-transform:uppercase;letter-spacing:.08em;min-height:32px}
+  details.opt summary::-webkit-details-marker{display:none}
+  details.opt summary::after{content:"+";font-family:var(--mono);font-size:16px;color:var(--muted)}
+  details.opt[open] summary::after{content:"\2212"}
+  details.opt summary em{font-style:normal;color:var(--accent);text-transform:none;letter-spacing:0;margin-left:6px}
+  details.opt fieldset{margin-top:12px}
   .field{display:flex;flex-direction:column;gap:6px;min-width:0}
   .field label{font-size:14px;color:var(--ink)}
   .field .in{display:flex;align-items:center;border:1px solid var(--line);background:#fff}
@@ -190,29 +197,33 @@
           <legend>Required</legend>
           <div class="field"><div class="lr"><label for="cash">Cash in the bank</label><button type="button" class="help" data-tip="Total cash in your operating and sweep accounts today. Exclude receivables, credit lines and funding that has not wired yet." aria-label="More about this field">?</button></div><div class="in"><span>$</span><input id="cash" type="number" inputmode="numeric" value="850000" min="0" step="1000" required></div></div>
           <div class="field"><div class="lr"><label for="spend">Gross monthly spend</label><button type="button" class="help" data-tip="Everything that leaves the account in a typical month before any revenue: payroll, contractors, cloud and inference, rent, software, fees." aria-label="More about this field">?</button></div><div class="in"><span>$</span><input id="spend" type="number" inputmode="numeric" value="70000" min="0" step="1000" required></div></div>
-          <p class="hint">These two give you runway. Everything below is optional and adds scenarios.</p>
+          <p class="hint">These two give you runway. Open the sections below to add revenue growth and planned hires; each adds a scenario.</p>
         </fieldset>
+        <details class="opt" id="opt-revenue">
+          <summary>Revenue <em>optional · adds growth scenarios</em></summary>
         <fieldset>
-          <legend>Revenue <em>optional</em></legend>
-          <div class="field"><div class="lr"><label for="mrr">MRR</label><button type="button" class="help" data-tip="Monthly recurring revenue billed this month. Leave blank if pre-revenue. One-off pilots and services don't count." aria-label="More about this field">?</button></div><div class="in"><span>$</span><input id="mrr" type="number" inputmode="numeric" value="8000" min="0" step="500" placeholder="0"></div></div>
-          <div class="field"><div class="lr"><label for="growth">MRR growth, month over month</label><button type="button" class="help" data-tip="Month-over-month MRR growth. 5 to 10% is typical at seed, 15%+ is exceptional. The model compounds it every month." aria-label="More about this field">?</button></div><div class="in"><span>%</span><input id="growth" type="number" inputmode="decimal" value="6" min="0" max="60" step="0.5" placeholder="0"></div></div>
-          <div class="field"><div class="lr"><label for="margin">Gross margin</label><button type="button" class="help" data-tip="Share of revenue left after the cost of serving customers: hosting, inference, support. SaaS runs 70 to 85%; AI products are often lower once inference is counted. Blank = 80%." aria-label="More about this field">?</button></div><div class="in"><span>%</span><input id="margin" type="number" inputmode="numeric" value="75" min="0" max="100" step="1" placeholder="80"></div></div>
-          <div class="field"><div class="lr"><label for="infer">Of spend, inference / model APIs</label><button type="button" class="help" data-tip="Your monthly bill for OpenAI, Anthropic, GPUs and similar. Used to show how gross margin changes when inference is booked as cost of revenue instead of R&D." aria-label="More about this field">?</button></div><div class="in"><span>$</span><input id="infer" type="number" inputmode="numeric" value="12000" min="0" step="500" placeholder="0"></div></div>
+          <div class="field"><div class="lr"><label for="mrr">MRR</label><button type="button" class="help" data-tip="Monthly recurring revenue billed this month. Leave blank if pre-revenue. One-off pilots and services don't count." aria-label="More about this field">?</button></div><div class="in"><span>$</span><input id="mrr" type="number" inputmode="numeric" min="0" step="500" placeholder="0"></div></div>
+          <div class="field"><div class="lr"><label for="growth">MRR growth, month over month</label><button type="button" class="help" data-tip="Month-over-month MRR growth. 5 to 10% is typical at seed, 15%+ is exceptional. The model compounds it every month." aria-label="More about this field">?</button></div><div class="in"><span>%</span><input id="growth" type="number" inputmode="decimal" min="0" max="60" step="0.5" placeholder="0"></div></div>
+          <div class="field"><div class="lr"><label for="margin">Gross margin</label><button type="button" class="help" data-tip="Share of revenue left after the cost of serving customers: hosting, inference, support. SaaS runs 70 to 85%; AI products are often lower once inference is counted. Blank = 80%." aria-label="More about this field">?</button></div><div class="in"><span>%</span><input id="margin" type="number" inputmode="numeric" min="0" max="100" step="1" placeholder="80"></div></div>
+          <div class="field"><div class="lr"><label for="infer">Of spend, inference / model APIs</label><button type="button" class="help" data-tip="Your monthly bill for OpenAI, Anthropic, GPUs and similar. Used to show how gross margin changes when inference is booked as cost of revenue instead of R&D." aria-label="More about this field">?</button></div><div class="in"><span>$</span><input id="infer" type="number" inputmode="numeric" min="0" step="500" placeholder="0"></div></div>
         </fieldset>
+        </details>
+        <details class="opt" id="opt-team">
+          <summary>Team <em>optional · adds planned hires</em></summary>
         <fieldset>
-          <legend>Team <em>optional</em></legend>
-          <div class="field"><div class="lr"><label for="hires">Planned hires</label><button type="button" class="help" data-tip="Full-time hires you expect to make in the next six months." aria-label="More about this field">?</button></div><div class="in"><span>#</span><input id="hires" type="number" inputmode="numeric" value="2" min="0" step="1" placeholder="0"></div></div>
-          <div class="field"><div class="lr"><label for="start">Starting in month</label><button type="button" class="help" data-tip="The month their salaries start hitting the account. M0 is this month, M2 is two months from now." aria-label="More about this field">?</button></div><div class="in"><span>M</span><input id="start" type="number" inputmode="numeric" value="2" min="0" max="24" step="1" placeholder="0"></div></div>
-          <div class="field"><div class="lr"><label for="loaded">Loaded cost per hire, yearly</label><button type="button" class="help" data-tip="Salary plus payroll taxes, benefits and equipment, usually 1.2 to 1.3× base. $150k is a common seed-stage engineer. Blank = $150k." aria-label="More about this field">?</button></div><div class="in"><span>$</span><input id="loaded" type="number" inputmode="numeric" value="150000" min="0" step="5000" placeholder="150000"></div></div>
-          <div class="field"><div class="lr"><label for="states">States with employees</label><button type="button" class="help" data-tip="Number of US states you'll have W-2 employees in. Each state means its own employer registration and quarterly filings." aria-label="More about this field">?</button></div><div class="in"><span>#</span><input id="states" type="number" inputmode="numeric" value="1" min="1" max="50" step="1" placeholder="1"></div></div>
+          <div class="field"><div class="lr"><label for="hires">Planned hires</label><button type="button" class="help" data-tip="Full-time hires you expect to make in the next six months." aria-label="More about this field">?</button></div><div class="in"><span>#</span><input id="hires" type="number" inputmode="numeric" min="0" step="1" placeholder="0"></div></div>
+          <div class="field"><div class="lr"><label for="start">Starting in month</label><button type="button" class="help" data-tip="The month their salaries start hitting the account. M0 is this month, M2 is two months from now." aria-label="More about this field">?</button></div><div class="in"><span>M</span><input id="start" type="number" inputmode="numeric" min="0" max="24" step="1" placeholder="0"></div></div>
+          <div class="field"><div class="lr"><label for="loaded">Loaded cost per hire, yearly</label><button type="button" class="help" data-tip="Salary plus payroll taxes, benefits and equipment, usually 1.2 to 1.3× base. $150k is a common seed-stage engineer. Blank = $150k." aria-label="More about this field">?</button></div><div class="in"><span>$</span><input id="loaded" type="number" inputmode="numeric" min="0" step="5000" placeholder="150000"></div></div>
+          <div class="field"><div class="lr"><label for="states">States with employees</label><button type="button" class="help" data-tip="Number of US states you'll have W-2 employees in. Each state means its own employer registration and quarterly filings." aria-label="More about this field">?</button></div><div class="in"><span>#</span><input id="states" type="number" inputmode="numeric" min="1" max="50" step="1" placeholder="1"></div></div>
         </fieldset>
+        </details>
         <fieldset>
           <legend>Entity</legend>
           <div class="checks">
             <label><input id="de" type="checkbox" checked> Delaware C-corp</label><button type="button" class="help" data-tip="Check if the company is incorporated in Delaware. Triggers the March 1 franchise tax and annual report." aria-label="More about this field">?</button>
             <label><input id="foreign" type="checkbox"> Foreign founder or shareholder</label><button type="button" class="help right" data-tip="Any non-US founder, or any non-US person or entity owning 25% or more. Triggers Form 5472 with the return and possibly FBAR." aria-label="More about this field">?</button>
           </div>
-          <p class="hint">Example numbers are shown; replace them with yours. Nothing you type leaves your browser. We record only that a check happened and the rounded result.</p>
+          <p class="hint">Nothing you type leaves your browser. We record only that a check happened and the rounded result.</p>
         </fieldset>
       </form>
     </div>
@@ -550,6 +561,8 @@
   ['cta-app','cta-app-2'].forEach(id=>$(id).addEventListener('click',()=>track('runway_app_cta_clicked',Object.assign({placement:id},last||{}))));
 
   const prefilled=fromUrl();
+  if(['mrr','growth','margin','infer'].some(id=>$(id).value!=='')) $('opt-revenue').open=true;
+  if(['hires','start','loaded','states'].some(id=>$(id).value!=='')) $('opt-team').open=true;
   if(new URLSearchParams(location.search).get('unlocked')==='1'||isUnlocked()) unlock(null); else document.getElementById('locked').setAttribute('aria-hidden','true');
   run();
   if(prefilled) track('runway_link_opened',last||{});
