@@ -47,6 +47,7 @@
   })();
 </script>
 <style>
+  [hidden]{display:none!important}
   :root{--s-base:#204b3d;--s-cons:#8a6d1f;--s-opt:#3b5f9e;--good:#204b3d;--good-soft:#e2ece7;--warn:#8a6d1f;--warn-soft:#f3ecd8;--bad:#9a3b2e;--bad-soft:#f4e1dd}
   .rc-hero .lead{max-width:38em}
   .rc-hero .fine{margin-top:14px;font:13px/1.5 var(--mono);color:var(--muted)}
@@ -152,6 +153,8 @@
   .gate-box .consent{display:flex;gap:10px;align-items:flex-start;margin-top:14px;font-size:13px;color:var(--ink);line-height:1.5}
   .gate-box .consent input{accent-color:var(--accent);width:16px;height:16px;flex:none;margin-top:2px}
   .email-note a{color:var(--accent)}
+  .linkbtn{background:none;border:0;padding:0;font:inherit;color:var(--accent);text-decoration:underline;text-underline-offset:3px;cursor:pointer}
+  .email-note.err{color:var(--bad)}
   .unlocked .locked .blur{filter:none;pointer-events:auto;user-select:auto;opacity:1}
   .unlocked .gate{display:none}
   .thanks{margin-top:24px;padding:14px 16px;background:var(--wash);font-size:14px;line-height:1.55}
@@ -241,10 +244,16 @@
       <form class="email" id="emailform">
         <label for="em" style="position:absolute;left:-9999px">Email</label>
         <input id="em" type="email" placeholder="you@startup.com" autocomplete="email" required>
-        <button class="btn" type="submit" id="send">Show my full result</button>
+        <button class="btn" type="submit" id="send">Send me a code</button>
       </form>
-      <label class="consent"><input id="consent" type="checkbox"> Also send me Pren's deadline reminders and occasional updates. Unsubscribe any time.</label>
-      <p class="email-note" id="email-note">Unlocks instantly. We email you a link to this result. Nothing else unless you tick the box above or reply. <a href="/legal/privacy/">Privacy</a>.</p>
+      <label class="consent" id="consent-row"><input id="consent" type="checkbox"> Also send me Pren's deadline reminders and occasional updates. Unsubscribe any time.</label>
+      <p class="email-note" id="email-note">We email you a 6-digit code and a link to this result. Nothing else unless you tick the box above or reply. <a href="/legal/privacy/">Privacy</a>.</p>
+      <form class="email" id="codeform" hidden>
+        <label for="code" style="position:absolute;left:-9999px">Code</label>
+        <input id="code" type="text" inputmode="numeric" autocomplete="one-time-code" pattern="[0-9]{6}" maxlength="6" placeholder="6-digit code" required>
+        <button class="btn" type="submit" id="verify">Unlock</button>
+      </form>
+      <p class="email-note" id="code-note" hidden></p>
     </div>
   </div>
   <div class="locked" id="locked">
@@ -493,18 +502,51 @@
     document.getElementById('locked').removeAttribute('aria-hidden');
     try{ if(em) localStorage.setItem(KEY,em); }catch(e){}
   }
+  // Step 1: the page makes a 6-digit code and hands it to PostHog; a workflow emails it (with a link
+  // that opens the full result). Step 2: the code typed here is compared with the one this page made.
+  // The code lives in this browser only; it is a deliverability check, not a security boundary.
+  const PENDING='pren_runway_pending', CODE_TTL=15*60*1000;
+  const pending=()=>{ try{ const v=JSON.parse(localStorage.getItem(PENDING)||'null'); return v&&v.at&&Date.now()-v.at<CODE_TTL?v:null; }catch(e){ return null; } };
+  const makeCode=()=>{ const a=new Uint32Array(1); (crypto.getRandomValues?crypto.getRandomValues(a):(a[0]=Math.random()*1e9)); return String(100000+(a[0]%900000)); };
+  function showCodeStep(em){
+    $('emailform').hidden=true; $('consent-row').hidden=true; $('email-note').hidden=true;
+    $('codeform').hidden=false; $('code-note').hidden=false; $('code-note').className='email-note';
+    $('code-note').innerHTML='Code sent to <b></b>. It arrives within a minute; check spam. Codes expire in 15 minutes. <button type="button" class="linkbtn" id="resend">Send a new code</button> · <button type="button" class="linkbtn" id="change">Use another email</button>';
+    $('code-note').querySelector('b').textContent=em;
+    $('resend').addEventListener('click',()=>requestCode(em,true));
+    $('change').addEventListener('click',()=>{ try{localStorage.removeItem(PENDING)}catch(e){}; $('codeform').hidden=true; $('code-note').hidden=true; $('emailform').hidden=false; $('consent-row').hidden=false; $('email-note').hidden=false; $('em').focus(); });
+    $('code').value=''; $('code').focus();
+  }
+  function requestCode(em,resend){
+    const consent=$('consent').checked; const code=makeCode();
+    try{ localStorage.setItem(PENDING,JSON.stringify({email:em,code,at:Date.now(),consent})); }catch(e){}
+    const p=ph();
+    if(!p){ unlock(em); run(); const th=$('thanks'); th.textContent='Unlocked. Your browser blocked our analytics script, so we could not send a code or record your email; use "Copy a link" to keep this result.'; th.hidden=false; return; }
+    try{ p.identify(em,{email:em, marketing_consent:consent, marketing_consent_at:consent?new Date().toISOString():null, marketing_consent_source:consent?'runway-check':null, runway_email_verified:false}); }catch(err){}
+    track('runway_code_requested',Object.assign({code, resend:!!resend, share_url:toUrl(true), marketing_consent:consent},last||{}));
+    showCodeStep(em);
+  }
   $('emailform').addEventListener('submit',e=>{
     e.preventDefault();
     const em=$('em').value.trim(); if(!em) return;
-    const p=ph(); const th=$('thanks');
-    unlock(em); run();
-    const consent=$('consent').checked;
-    if(p){ try{ p.identify(em,{email:em, marketing_consent:consent, marketing_consent_at:consent?new Date().toISOString():null, marketing_consent_source:consent?'runway-check':null}); }catch(err){} track('runway_email_captured',Object.assign({share_url:toUrl(true), marketing_consent:consent},last||{})); th.textContent='Unlocked. A link to this result is on its way to '+em+'. Change any number above and the result updates.'; }
-    else { th.textContent='Unlocked. Your browser blocked our analytics script, so we could not record your email; use "Copy a link" to keep this result.'; }
-    th.hidden=false;
+    const pd=pending();
+    if(pd&&pd.email===em){ showCodeStep(em); return; }
+    requestCode(em,false);
+  });
+  $('codeform').addEventListener('submit',e=>{
+    e.preventDefault();
+    const pd=pending(); const typed=$('code').value.trim(); const note=$('code-note');
+    if(!pd){ note.className='email-note err'; note.textContent='That code has expired. Enter your email again to get a new one.'; $('codeform').hidden=true; $('emailform').hidden=false; $('consent-row').hidden=false; $('email-note').hidden=false; return; }
+    if(typed!==pd.code){ note.className='email-note err'; note.innerHTML='That code did not match. Check the email or <button type="button" class="linkbtn" id="resend2">send a new one</button>.'; $('resend2').addEventListener('click',()=>requestCode(pd.email,true)); $('code').select(); return; }
+    try{ localStorage.removeItem(PENDING); }catch(err){}
+    unlock(pd.email); run();
+    const p=ph(); if(p){ try{ p.identify(pd.email,{runway_email_verified:true, runway_email_verified_at:new Date().toISOString()}); }catch(err){} }
+    track('runway_email_verified',Object.assign({share_url:toUrl(true), marketing_consent:!!pd.consent},last||{}));
+    const th=$('thanks'); th.textContent='Unlocked. The email we sent also has a link that opens this result in full on any device. Change any number above and the result updates.'; th.hidden=false;
     document.getElementById('locked').scrollIntoView({behavior:'smooth',block:'start'});
   });
-  $('copy').addEventListener('click',()=>{ const url=toUrl(); const b=$('copy'); const done=()=>{ b.textContent='Link copied'; setTimeout(()=>b.textContent='Copy a link to these numbers',1800); }; if(navigator.clipboard) navigator.clipboard.writeText(url).then(done,()=>prompt('Copy this link',url)); else prompt('Copy this link',url); track('runway_link_copied',last||{}); });
+  // a visitor who asked for a code, left, and came back inside 15 minutes lands on the code step
+  { const pd=pending(); if(pd&&!isUnlocked()){ $('em').value=pd.email; $('consent').checked=!!pd.consent; showCodeStep(pd.email); } }
   ['cta-app','cta-app-2'].forEach(id=>$(id).addEventListener('click',()=>track('runway_app_cta_clicked',Object.assign({placement:id},last||{}))));
 
   const prefilled=fromUrl();
