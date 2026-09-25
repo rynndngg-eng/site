@@ -296,7 +296,6 @@
 
   <div class="rc-actions">
     <a class="btn" id="cta-app" href="https://app.usepren.com/start?plan=pren">See your real runway from your bank</a>
-    <button class="btn ghost" type="button" id="print">Print or save as PDF</button>
     <button class="btn ghost" type="button" id="copy">Copy a link to these numbers</button>
   </div>
 
@@ -505,7 +504,6 @@
     th.hidden=false;
     document.getElementById('locked').scrollIntoView({behavior:'smooth',block:'start'});
   });
-  $('print').addEventListener('click',()=>{ track('runway_print_clicked',last||{}); window.print(); });
   $('copy').addEventListener('click',()=>{ const url=toUrl(); const b=$('copy'); const done=()=>{ b.textContent='Link copied'; setTimeout(()=>b.textContent='Copy a link to these numbers',1800); }; if(navigator.clipboard) navigator.clipboard.writeText(url).then(done,()=>prompt('Copy this link',url)); else prompt('Copy this link',url); track('runway_link_copied',last||{}); });
   ['cta-app','cta-app-2'].forEach(id=>$(id).addEventListener('click',()=>track('runway_app_cta_clicked',Object.assign({placement:id},last||{}))));
 
