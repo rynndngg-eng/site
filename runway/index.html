@@ -175,6 +175,9 @@
   .email-note.err{color:var(--bad)}
   .unlocked .locked .blur{filter:none;pointer-events:auto;user-select:auto;opacity:1}
   .unlocked .gate{display:none}
+  .unlocked .gate-row{display:none}
+  .rc-unlocked .kpi-full{display:none}
+  .rc-side .about-card{grid-column:auto}
   .thanks{margin-top:24px;padding:14px 16px;background:var(--wash);font-size:14px;line-height:1.55}
   details.how{margin-top:24px}
   details.how ul{margin:10px 0 0;padding-left:18px;display:grid;gap:6px;color:var(--muted);font-size:14px;max-width:60em}
@@ -252,7 +255,7 @@
         <span class="v" id="k-burn">—</span>
         <span class="sub" id="k-alive">—</span>
       </div>
-      <div class="kpi" style="grid-column:1/-1;border-top:1px solid var(--line)">
+      <div class="kpi kpi-full" style="grid-column:1/-1;border-top:1px solid var(--line)">
         <span class="l">Full result</span>
         <span class="sub">When to start raising, the 24-month cash curve, three scenarios, your burn multiple and the deadlines you're carrying are below. They unlock with your email.</span>
       </div>
@@ -548,6 +551,9 @@
   function isUnlocked(){ try{ return !!localStorage.getItem(KEY); }catch(e){ return false; } }
   function unlock(em){
     document.getElementById('gated').classList.add('unlocked');
+    document.body.classList.add('rc-unlocked');
+    const card=document.querySelector('.about-card'), side=document.querySelector('.rc-side');
+    if(card&&side&&card.parentElement!==side) side.appendChild(card);
     document.getElementById('locked').removeAttribute('aria-hidden');
     try{ if(em) localStorage.setItem(KEY,em); }catch(e){}
   }
