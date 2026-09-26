@@ -39,7 +39,8 @@
       window.posthog.init("phc_uoiwr36ssFLqHkGYi5e6H5YHJieWVKr4aDAM3YkLoUNi", {
         api_host: "https://us.i.posthog.com",
         defaults: "2026-05-30",
-        capture_exceptions: true
+        capture_exceptions: true,
+        session_recording: { maskAllInputs: true }
       });
     };
     document.head.appendChild(s);
