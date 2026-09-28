@@ -206,19 +206,54 @@ clip-path:polygon(0 40%,20% 40%,20% 60%,40% 60%,40% 40%,60% 40%,60% 20%,80% 20%,
 .consent figcaption{margin-top:12px}
 .sample{background:var(--wash);padding:16px 20px;font:15px/1.6 var(--mono);max-width:34em;margin-top:16px!important}
 
-/* 2026-09-28: little ASCII trucks (hero strip, closing convoy), the phone button, cents a mile. */
-.strip{overflow:hidden;line-height:0;border-bottom:1px dashed var(--line);text-align:left}
-.strip-truck{display:inline-block;margin:6px 0 0;font:12px/1.2 var(--mono);color:var(--accent);text-align:left;white-space:pre;animation:drive 16s linear infinite}
-@keyframes drive{from{transform:translateX(-30vw)}to{transform:translateX(105vw)}}
-.convoy{overflow:hidden;border-bottom:1px solid #f8f9fa22;padding:18px 0 14px;margin:calc(-1 * clamp(56px,7vw,104px)) 0 clamp(40px,5vw,64px)}
-.convoy-run{display:inline-block;margin:0;font:12px/1.25 var(--mono);color:#bacfa5;white-space:pre;animation:convoy 70s linear infinite}
-@keyframes convoy{from{transform:translateX(-50%)}to{transform:translateX(0)}}
+/* 2026-09-28: the phone button and cents a mile. */
 .proof-note{margin-top:28px;font-size:14px}
 .plan-mile{font:13px/1.5 var(--mono);color:var(--muted);margin-top:2px}
 .sticky-cta{display:none}
 @media (max-width:760px){
-  .sticky-cta{display:flex;position:fixed;left:12px;right:12px;bottom:12px;z-index:20;justify-content:center;align-items:center;gap:12px;min-height:52px;background:var(--accent);color:#fff;text-decoration:none;font-weight:500;clip-path:var(--notch);transform:translateY(90px);transition:transform .2s steps(3,end)}
+  .sticky-cta{display:flex;position:fixed;left:12px;right:12px;bottom:12px;z-index:20;justify-content:center;align-items:center;gap:12px;min-height:52px;background:var(--ink);color:#fff;text-decoration:none;font-weight:500;clip-path:var(--notch);transform:translateY(90px);transition:transform .32s cubic-bezier(.2,.8,.2,1)}
   .sticky-cta .arrow{fill:currentColor}.sticky-cta.show{transform:none}
-  .convoy-run{font-size:10px}.strip-truck{font-size:10px}
 }
-@media (prefers-reduced-motion:reduce){.strip-truck{animation:none;transform:translateX(60vw)}.convoy-run{animation:none}}
+
+/* The hero picture prints in once, smoothly. */
+.hero-art img{animation:print 1.2s cubic-bezier(.65,0,.35,1) .1s both}
+
+/* The road scene in the closing band (site.js): hand-drawn ASCII, layers gliding at their own depths. */
+.road{position:relative;height:16em;overflow:hidden;font:400 14px/1 var(--mono);color:#f3f5f2;margin:calc(-1 * clamp(56px,7vw,104px)) 0 clamp(36px,5vw,60px);border-bottom:1px solid #f8f9fa1f;user-select:none;-webkit-user-select:none}
+.road:not(.on){display:none}
+.road pre{margin:0;font:inherit;line-height:1;white-space:pre;position:absolute;left:0;font-variant-ligatures:none}
+.rl{will-change:transform;animation:rl linear infinite}
+@keyframes rl{from{transform:translate3d(0,0,0)}to{transform:translate3d(-50%,0,0)}}
+.rl-hills{top:2em;color:#f3f5f23d;animation-duration:70s}
+.rl-poles{top:4em;color:#f3f5f25e;animation-duration:17s}
+.rl-edge{top:8.4em;color:#f3f5f280;animation-duration:10s}
+.rl-dash{top:13.2em;color:#e0a526;animation-duration:10s}
+.rl-grav{top:14.8em;color:#f3f5f24d;animation-duration:10s}
+.rl-truck{position:absolute;left:50%;top:2em;width:max-content;transform:translateX(-40%)}
+.road .rl-truck pre{position:relative}
+.rl-body{animation:ride .46s ease-in-out infinite alternate}
+@keyframes ride{from{transform:translateY(0)}to{transform:translateY(1px)}}
+.rl-body,.rl-wheels{background:var(--ink)}
+.rl-body{padding-bottom:2px}
+.hub{font-weight:400;color:#e0a526}
+.puff{position:absolute;left:55ch;top:-1.1em;font-style:normal;opacity:0;color:#f3f5f2;animation:puff 2.7s ease-out infinite}
+.p2{animation-delay:.9s}.p3{animation-delay:1.8s}
+@keyframes puff{0%{opacity:0;transform:translate(0,0) scale(.6)}12%{opacity:.55}100%{opacity:0;transform:translate(-9em,-1.4em) scale(1.4)}}
+.road.paused *{animation-play-state:paused}
+@media (max-width:760px){.road{font-size:8px}.rl-truck{transform:translateX(-50%)}}
+@media (prefers-reduced-motion:reduce){.road *{animation:none!important}.hero-art img{animation:none}}
+
+/* Motion: smooth, short, eased. No stepped transitions. */
+.btn,.plan-choose{transition:background-color .18s ease,color .18s ease}
+.svc .arrow{transition:transform .22s cubic-bezier(.2,.8,.2,1),fill .18s ease}
+.svc strong{transition:color .18s ease}
+a.card{transition:background-color .18s ease}
+
+/* One palette: asphalt ink, highway green, road-stripe amber. */
+.svc-blue,.svc-amber,.svc-violet,.svc-green,.fig-blue,.fig-amber,.fig-violet{--tone:var(--accent)}
+.svc>.px:first-child{--px-accent:#c98f1a}
+.due .px{color:var(--accent);--px-accent:#c98f1a}
+.flow-src .px{--px-accent:#c98f1a}
+.plan{--stage-paper:#e9ede8;--stage-ink:#172522;--px-accent:#204b3d;--plan-ink:#172522}
+.plan-back-office{--stage-paper:#172522;--stage-ink:#f3f5f2;--px-accent:#e0a526;--plan-ink:#172522}
+.plan-firm{--stage-paper:#204b3d;--stage-ink:#f0f5ed;--px-accent:#bacfa5;--plan-ink:#204b3d}
