@@ -16,14 +16,15 @@ Who it serves: owner-operators and fleets of up to 49 trucks with a USDOT number
 - A spreadsheet of miles by state: Your ELD's miles become miles by state on their own.
 - Five vendors and five bills: One price per truck, month to month.
 - Hours on hold over Motus and your authority: Pren reads your FMCSA record every day and flags a change the day it happens, with the proof to send your brokers.
+- Money left on the table: Reefer fuel refunds, 2290 credits and factor fees above your contract, found and claimed.
 - Scam letters and fake MCS-150 invoices: Forward any letter or email. We tell you if it is real and whether you owe anything.
 - Audit panic: Four years of miles, fuel and receipts kept, and the audit packet ready in one click.
 
 ## Proof, not paperwork
 
-- 0 passwords you give us: Your ELD, fuel card and bank connect through their own sign-in. States give Pren access through their own authorization forms.
+- 2 minutes a quarter on IFTA: Your time, down from 4 hours or more. Miles by state come from your ELD, gallons from your fuel card.
+- 1 hour to a prepared return: From the quarter's last record, not the 30 days after. Every record is checked every day while it can still be fixed.
 - 4 years of records kept: The miles, gallons and receipts behind every return, with the audit packet one click away.
-- 1 price per truck: Month to month, in place of five vendors and five bills. Trailers are free.
 
 ## Plans and pricing
 

@@ -205,3 +205,20 @@ clip-path:polygon(0 40%,20% 40%,20% 60%,40% 60%,40% 40%,60% 40%,60% 20%,80% 20%,
 .consent-words{font-size:15px;line-height:1.55}
 .consent figcaption{margin-top:12px}
 .sample{background:var(--wash);padding:16px 20px;font:15px/1.6 var(--mono);max-width:34em;margin-top:16px!important}
+
+/* 2026-09-28: little ASCII trucks (hero strip, closing convoy), the phone button, cents a mile. */
+.strip{overflow:hidden;line-height:0;border-bottom:1px dashed var(--line);text-align:left}
+.strip-truck{display:inline-block;margin:6px 0 0;font:12px/1.2 var(--mono);color:var(--accent);text-align:left;white-space:pre;animation:drive 16s linear infinite}
+@keyframes drive{from{transform:translateX(-30vw)}to{transform:translateX(105vw)}}
+.convoy{overflow:hidden;border-bottom:1px solid #f8f9fa22;padding:18px 0 14px;margin:calc(-1 * clamp(56px,7vw,104px)) 0 clamp(40px,5vw,64px)}
+.convoy-run{display:inline-block;margin:0;font:12px/1.25 var(--mono);color:#bacfa5;white-space:pre;animation:convoy 70s linear infinite}
+@keyframes convoy{from{transform:translateX(-50%)}to{transform:translateX(0)}}
+.proof-note{margin-top:28px;font-size:14px}
+.plan-mile{font:13px/1.5 var(--mono);color:var(--muted);margin-top:2px}
+.sticky-cta{display:none}
+@media (max-width:760px){
+  .sticky-cta{display:flex;position:fixed;left:12px;right:12px;bottom:12px;z-index:20;justify-content:center;align-items:center;gap:12px;min-height:52px;background:var(--accent);color:#fff;text-decoration:none;font-weight:500;clip-path:var(--notch);transform:translateY(90px);transition:transform .2s steps(3,end)}
+  .sticky-cta .arrow{fill:currentColor}.sticky-cta.show{transform:none}
+  .convoy-run{font-size:10px}.strip-truck{font-size:10px}
+}
+@media (prefers-reduced-motion:reduce){.strip-truck{animation:none;transform:translateX(60vw)}.convoy-run{animation:none}}

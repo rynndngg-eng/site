@@ -83,5 +83,15 @@
   </div>
   <p class="note">© 2026 Pren. 501 Folsom Street, San Francisco, CA 94105. Your exact plan and price are shown in the app before you accept anything.</p>
 </footer>
+<a class="sticky-cta" data-sticky href="https://app.usepren.com/start">Start with your DOT number <svg class="px arrow" viewBox="0 0 7 7" width="14" height="14" aria-hidden="true" focusable="false" shape-rendering="crispEdges"><path class="p1" d="M2 0h5v1h-5zM5 1h2v1h-2zM4 2h1v1h-1zM6 2h1v1h-1zM3 3h1v1h-1zM6 3h1v1h-1zM2 4h1v1h-1zM1 5h1v1h-1zM0 6h1v1h-1z"/></svg></a><script>
+(function () {
+  var b = document.querySelector("[data-sticky]"), top = document.querySelector(".home-hero, section.hero"), cta = document.querySelector("section.cta");
+  if (!b || !("IntersectionObserver" in window)) return;
+  var topIn = true, ctaIn = false;
+  function set() { b.classList.toggle("show", !topIn && !ctaIn); }
+  new IntersectionObserver(function (e) { topIn = e[0].isIntersecting; set(); }).observe(top || document.body);
+  if (cta) new IntersectionObserver(function (e) { ctaIn = e[0].isIntersecting; set(); }).observe(cta);
+})();
+</script>
 </body>
 </html>
