@@ -40,3 +40,4 @@ Key facts:
 - [Full text for language models](https://usepren.com/llms-full.txt)
 - [Privacy](https://usepren.com/legal/privacy/)
 - [Terms](https://usepren.com/legal/terms/)
+- [Text messages](https://usepren.com/sms/): how a fleet turns on texts from Pren, and how to stop them.

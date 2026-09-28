@@ -194,3 +194,14 @@ clip-path:polygon(0 40%,20% 40%,20% 60%,40% 60%,40% 40%,60% 40%,60% 20%,80% 20%,
 .flow-src{font-size:15px}.flow-box{padding:16px 18px}}
 @media (max-width:380px){header.top .wordmark{font-size:32px}nav.primary{gap:12px;font-size:14px}.btn-small{padding:9px 10px}}
 @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+
+/* Text messages page: the mobile number field and the statement, as the app shows them. */
+.prose ul.checks+p{margin-top:20px}
+.consent{margin:28px 0}
+.consent-ui{background:#fff;border:1px solid var(--line);padding:clamp(20px,3vw,28px);display:grid;gap:12px;max-width:34em}
+.prose .consent-ui p{margin:0}
+.consent-label{font-weight:500;font-size:15px}
+.consent-field{border:1px solid var(--ink);padding:10px 14px;font:16px/1.4 var(--mono);max-width:15em}
+.consent-words{font-size:15px;line-height:1.55}
+.consent figcaption{margin-top:12px}
+.sample{background:var(--wash);padding:16px 20px;font:15px/1.6 var(--mono);max-width:34em;margin-top:16px!important}
