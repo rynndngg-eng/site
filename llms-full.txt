@@ -1,151 +1,186 @@
-# Pren: startup accounting
+# Pren: fuel tax, filings and books for trucking
 
 Source: https://usepren.com/
 
-> Pren is an accounting service for startups. Expert AI agents keep your books, prepare your business taxes, handle bills and invoices, and build your cash forecasts. A Pren professional handles judgment and review. Plans start at $299 per month.
+> Pren does the back office for trucking companies, from owner-operators to fleets of 49 trucks, in every state. Your IFTA fuel tax, Form 2290, IRP, UCR, books, payroll and business tax returns are prepared from your ELD and fuel card, reviewed by a licensed preparer and filed after you approve, with the proof one click away. Plans are priced per truck, month to month, from $29 a truck.
 
-## The easiest way to do startup accounting
+## Fuel tax, filings and books. Done and filed.
 
-Books, taxes and payroll. Automated by expert AI agents. More time to build, sell and hire.
+IFTA, 2290, IRP, UCR, books, payroll and returns, prepared from your ELD and fuel card. You approve on your phone. We file, with the proof one click away.
 
-Pren does the accounting so founders can run the company. Receipts, spreadsheets and deadlines compete with the company you are building; Pren connects your records once and takes over. AI agents handle the work, you see progress and approve the decisions that need you, and a Pren professional reviews.
+Who it serves: owner-operators and fleets of up to 49 trucks with a USDOT number: for-hire or private, interstate or intrastate, based in any US state. Fleets of 50 trucks or more are reviewed by a person before they start.
+
+## What goes away
+
+- A shoebox of fuel receipts: Your fuel card transaction is the record. If one is missing, we ask the same day.
+- A spreadsheet of miles by state: Your ELD's miles become miles by state on their own.
+- Five vendors and five bills: One price per truck, month to month.
+- Hours on hold over Motus and your authority: Pren reads your FMCSA record every day and flags a change the day it happens, with the proof to send your brokers.
+- Scam letters and fake MCS-150 invoices: Forward any letter or email. We tell you if it is real and whether you owe anything.
+- Audit panic: Four years of miles, fuel and receipts kept, and the audit packet ready in one click.
+
+## Proof, not paperwork
+
+- 0 passwords you give us: Your ELD, fuel card and bank connect through their own sign-in. States give Pren access through their own authorization forms.
+- 4 years of records kept: The miles, gallons and receipts behind every return, with the audit packet one click away.
+- 1 price per truck: Month to month, in place of five vendors and five bills. Trailers are free.
 
 ## Plans and pricing
 
-- **Pren** (Pre-seed & seed): $299 per month. Books & business taxes. Monthly books and agreed business-tax returns. Includes: 12 monthly closes per year; Up to 15 financial accounts; 2,000 imported entries per month; Business tax preparation; Reviewed financial statements; Answers, records & exports.
-- **Pren Plus** (Series A): $799 per month. Accounting, payroll & planning. Payroll and planning, connected to your books. Includes: Payroll through your own provider, reconciled with your books; 20 new bills + 20 new invoices per month; Budgets & a 13-week cash forecast; A 24-month financial forecast; Hiring & spending scenarios; Quarterly board reports & fundraising prep.
-- **Custom** (Growth & beyond): custom pricing. A plan for your company. More people, entities or specialist work. Includes: Services chosen for your company; Additional companies, states & countries; More transactions & specialist work; Agreed services, price & delivery dates.
+- **Compliance**: $29 a truck each month, at least $99. Fuel tax and truck filings. Your fuel taxes and truck filings, done and proven. Included in Compliance: IFTA fuel tax returns every quarter, from your ELD miles and fuel card; Form 2290 every year and for each truck you add, with a stamped Schedule 1; UCR, IRP, MCS-150 and weight-distance filings, with every deadline tracked; Every number with its proof, and your records yours to export.
+- **Back office**: $99 a truck each month, at least $299. Filings, books and payroll. Compliance plus your books, payroll and settlements. Everything in Compliance, plus: Monthly books with profit per truck: freight revenue, factoring, fuel and repairs, reconciled and reviewed; Driver payroll reconciled, or run by Pren for California drivers; Owner-operator settlements and Forms 1099-NEC; Your year-end figures ready for your tax preparer.
+- **Firm**: $129 a truck each month, at least $499. Everything, tax return included. Back office plus your business income tax returns. Everything in Back office, plus: Your business income tax return prepared, reviewed by a licensed preparer and filed; Form 1120, 1120-S or 1065, or Schedule C figures for a sole owner; State income or franchise tax returns where you are formed and operate; Your Pren team answers agency letters about the returns it filed.
 
-Necessary ledger software is included. Payroll-provider fees, banking and processing charges, government amounts, applicable taxes, and fixed cleanup work are disclosed separately before acceptance.
+The price covers Pren's work in your plan. Taxes and agency fees you owe, such as fuel tax, the 2290 tax, UCR and IRP fees, go from your account straight to the agency. A truck counts in a month when it is in service any day that month. Your exact plan and price are shown in the app before you accept.
 
-## Monthly bookkeeping, reviewed
+## IFTA fuel tax, filed every quarter
+
+Page: https://usepren.com/services/fuel-tax/
+Included in every plan.
+
+Your ELD already knows the miles by state and your fuel card knows the gallons. Pren turns them into your quarterly return, checks every record, and files it after you approve, with the proof behind every number.
+
+### Every quarter
+
+- Miles by state from your ELD, gallons from your fuel card transactions.
+- Every record checked: odd miles per gallon, fuel with no card record, miles in a state with no fuel.
+- Questions come to you the same day, not at quarter end.
+- The return explained in one plain sentence, with one Approve button.
+
+### Filed and proven
+
+- Your Pren team files at your base state's portal and keeps the receipt.
+- The tax you owe goes from your account straight to the state.
+- Four years of the records behind each return, kept for audits.
+- The audit packet in one click.
+
+## Form 2290, every truck, every year
+
+Page: https://usepren.com/services/2290/
+Included in every plan.
+
+The heavy vehicle use tax is due for each truck of 55,000 pounds or more, every year and again when you add a truck. Pren checks each VIN, prepares the return, files it after you approve, and keeps the stamped Schedule 1 you need for your plates.
+
+### What is included
+
+- The yearly return for the tax year that starts July 1, and a return for each truck you add during the year.
+- Every VIN checked before filing, so a typo does not turn into a correction.
+- The stamped Schedule 1 for each truck, kept with your records and ready for IRP.
+- Credits for trucks sold, destroyed or kept under the mileage limit, claimed when they apply.
+
+## UCR, IRP, MCS-150 and weight-distance
+
+Page: https://usepren.com/services/registrations/
+Included in every plan.
+
+The registrations that keep your trucks legal, found from your DOT number and filed inside your plan. Pren also reads your FMCSA record every day, so a change you did not make is caught the day it happens.
+
+### What is included
+
+- UCR every year, as soon as the window opens.
+- IRP renewals with the miles by state from your ELD.
+- MCS-150 updates when they come due, at no extra fee.
+- Weight-distance returns for Connecticut, Kentucky, New Mexico, New York and Oregon.
+- When one filing depends on another, you see what it is waiting on and who acts next.
+
+### Your record, watched
+
+- Your authority, insurance filing and registered details read from FMCSA every day.
+- A change you did not make flagged the same day, with the steps to lock your account.
+- A proof pack to send your brokers when your authority shows the wrong status.
+- Any letter or email checked: is it real, and do you owe anything.
+
+## Books that know your trucks
 
 Page: https://usepren.com/services/accounting/
-Included in Pren and Pren Plus.
+Included in Back office and Firm.
 
-AI-prepared books and financial statements, professionally reviewed. Transactions, supporting records and corrections stay together, so your books reflect the company you are building.
+Monthly books kept from your bank, fuel card, factoring statements and ELD, closed every month and reviewed. You see profit per truck and cost per mile, and every number opens to the record behind it.
 
-### Monthly books
+### Every month
 
-- Connect up to 15 financial accounts. Include up to 2,000 imported entries per month.
-- Receive a reviewed monthly close and financial statements for each covered month.
-- Find the transaction, supporting record and any correction together.
-- Export your books and supporting records whenever you need them.
+- Freight revenue, factoring, fuel, repairs, insurance and payroll, reconciled.
+- Profit per truck and cost per mile.
+- Every factoring statement tied out: the advance, the fee and the reserve you are still owed.
+- Money owed to you by age, and the brokers who pay slowly.
 
-### Monthly financial reports
+### Yours to keep
 
-- What you earned, what you spent and where cash went.
-- See the date of your numbers and anything still being resolved.
-- Download your reports and move providers with your records intact.
+- Every number opens to the record behind it.
+- Your year-end figures ready for your tax preparer.
+- Export your books and records any time.
 
-### Answers about your finances
-
-- Ask about spending, revenue or cash. Get answers from your records.
-- Inspect the source records and calculations behind an answer.
-- See what is known and what still needs clarification.
-
-## Business tax preparation
-
-Page: https://usepren.com/services/taxes/
-Included in Pren and Pren Plus.
-
-Agreed returns prepared from your books, reviewed, and ready for your signature. Filing is arranged with you until Pren’s e-file enrollment is complete. Your books and supporting records stay together all year, so tax season starts from reviewed numbers.
-
-### What is included
-
-- Know the company, covered tax year, federal and state returns, and other included filings before you sign.
-- Professional review and your signature come before anything is filed.
-- Once a return is filed, see whether it was accepted or rejected, with the agency’s receipt or notice. Pren keeps responsibility for agreed corrections and follow-up.
-- Additional jurisdictions, historical years, or specialist work are assessed separately.
-
-## Payroll, bills and customer invoices
+## Payroll and settlements
 
 Page: https://usepren.com/services/payroll/
-Included in Pren Plus.
+Included in Back office and Firm.
 
-Payroll through your own provider, reconciled with your books. Bills handled and invoices followed up, and you approve what needs you.
-
-### What is included
-
-- Payroll through your own provider, reconciled with your books.
-- Up to 20 new bills or reimbursement cases and 20 new customer invoice cases per month.
-- Approve required payments and see whether the money actually arrived.
-- Provider fees and other external charges are disclosed before acceptance.
-
-## Budget and cash forecasts
-
-Page: https://usepren.com/services/cash-planning/
-Included in Pren Plus.
-
-See how long cash lasts and what you can spend. Forecasts start from reviewed company records, show their assumptions and get a monthly check.
-
-### Budgets and forecasts
-
-- An annual budget and rolling 24-month operating forecast.
-- A 13-week cash forecast and scenario comparisons.
-- A monthly explanation of what changed against your budget, without a required meeting.
-- Forecasts start from reviewed company records and show their assumptions.
-
-### Test a hire or spending decision
-
-- Compare the cash impact before you commit.
-- Inspect the assumptions, source dates, and cash effects.
-- Compare scenarios against the same company baseline.
-- Forecasts are estimates, not guarantees. A scenario does not authorize a hire, payment, or payroll change.
-
-## Board and fundraising reports
-
-Page: https://usepren.com/services/fundraising-readiness/
-Included in Pren Plus.
-
-Organized financials for board meetings and fundraising, prepared from the same reviewed books as everything else in Pren.
+Company drivers paid through your payroll provider and reconciled with your books, or paid through Pren for California drivers. Owner-operators get clear settlements and their 1099-NEC, without logging in to anything.
 
 ### What is included
 
-- One standard quarterly board package, prepared by your Pren professional.
-- One standard annual financing-readiness package, prepared by your Pren professional.
-- Choose who can access each shared report.
-- Fundraising execution, investor access, and specialist transactions are separate work.
+- Driver payroll reconciled with your books, or run by Pren for California drivers.
+- Owner-operator settlements and escrow, shown line by line.
+- Forms 1099-NEC for owner-operators at year end.
+- Drivers answer requests by link. They never need an account.
 
-## Getting started
+## Your business tax return, done
 
-1. **Tell us about your company.** Share your structure, team size and accounting needs. Catch-up work is identified upfront.
-2. **Review your plan.** Check the included work, full price and first delivery. Cleanup and provider fees are explained before you accept.
-3. **Connect your accounts.** Link your financial records so Pren can start the agreed work. Pren prepares. You approve. A Pren professional reviews.
+Page: https://usepren.com/services/taxes/
+Included in Firm.
+
+Your income tax return prepared from the same books and records as everything else, reviewed by a licensed preparer and filed after you approve. Truck depreciation, per diem and fuel are handled the way trucking works.
+
+### What is included
+
+- Form 1120, 1120-S or 1065, or Schedule C figures for a sole owner.
+- State income or franchise tax returns where you are formed and operate.
+- Reviewed by a licensed preparer before you sign.
+- Your Pren team answers agency letters about the returns it filed.
+
+## How it works
+
+1. **Enter your DOT number.** Pren fills in your company, trucks and authority from FMCSA, and lists every filing you owe for the next 12 months.
+2. **Connect your ELD and fuel card.** Each connects in one click through the provider's own sign-in, so you never give us a password. If yours has no connection, upload its export and we show you where to find it.
+3. **Approve. We file.** Each return reaches your phone in one plain sentence, with the checks it passed. You tap Approve, your Pren team files it and keeps the agency's receipt.
 
 ## Questions about Pren
 
-### Is this software or an accounting service?
+### Which states do you cover?
 
-Pren is an accounting service powered by expert AI agents. They connect your records, prepare the work and follow up on what is still open. A Pren professional handles judgment and review. You make the business decisions and give required approvals.
+Every US base state. Pren prepares your returns from each state's rules, and your Pren team files them at your base state's portal. Owner-operators and fleets of up to 49 trucks can start on their own; fleets of 50 or more are reviewed by a person first.
 
-### Can I switch from my current provider?
+### Do I need to change my ELD or fuel card?
 
-We review your records, explain any cleanup needed, and agree on a handover before starting. You see the price and timing first.
+No. Pren connects to the ELD and fuel card you already use. If yours has no connection yet, you upload its export and we show you exactly where to find it.
 
-### How do you get my company ready for tax filing?
+### Will you ever ask for my passwords?
 
-Your books and supporting records stay together throughout the year. Professional review and your signature come before anything is filed, and filing is arranged with you until Pren’s e-file enrollment is complete. Once a return is filed, we record the agency’s acceptance or rejection and keep follow-up open until it is resolved. The exact returns and responsibilities are agreed before service starts.
+No. Your ELD, fuel card and bank connect through the provider's own sign-in, and state agencies give Pren access through their own authorization forms. Pren never asks for a password by email, text or phone. If someone does, it is not us.
 
-### Which taxes are included?
+### Who checks my returns before they are filed?
 
-We confirm the company, tax year and specific filings before you sign. Extra states, countries or past tax years may need a separate price.
+A licensed preparer on your Pren team reviews each return, and nothing is filed until you approve it. You see the return in one plain sentence, the checks it passed and the records behind every number.
 
-### What happens as we grow?
+### I already use a permit service or a bookkeeper. Can I switch?
 
-When you hire more people, add a company or expand into another country, we review the extra work and agree the price with you. Your records stay together.
+Yes. Start with your DOT number and connect your data. Pren prepares the current quarter from your ELD's history and picks up each filing as it comes due. A review of earlier quarters is available and priced before you agree to it.
 
-### Are there costs outside the subscription?
+### When is the next IFTA return due?
 
-Necessary ledger software is included. Payroll-provider fees, banking and processing charges, government amounts, applicable taxes, and fixed cleanup work are disclosed separately before acceptance.
+Third-quarter returns, for July to September, are due Oct 31, 2026. Start now and Pren prepares the quarter from your ELD's history.
 
-### Am I signing an annual contract?
+### What does it cost beyond the plan?
 
-Plans are monthly. Before you sign, we explain which annual tax work is covered and what happens to your work and records if you leave.
+The plan price is Pren's whole fee for the work in your plan. The taxes and agency fees you owe, such as fuel tax, the 2290 tax, UCR and IRP fees, go from your account straight to the agency. Work outside your plan is priced before you agree to it.
+
+### Is there a contract?
+
+No. Plans are month to month. Cancel any month and take a full export of your records with you.
 
 ## Contact
 
 - Email: ryan@usepren.com
 - Office: 501 Folsom Street, San Francisco, CA 94105
-- Get started: https://app.usepren.com/start?plan=pren
+- Start: https://app.usepren.com/start
 - Sign in: https://app.usepren.com/
