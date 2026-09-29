@@ -1,24 +1,23 @@
 # Pren
 
-> Pren does the back office for trucking companies, from owner-operators to fleets of 49 trucks, in every state. Your IFTA fuel tax, Form 2290, IRP, UCR, books, payroll and business tax returns are prepared from your ELD and fuel card, reviewed by a licensed preparer and filed after you approve, with the proof one click away. Plans are priced per truck, month to month, from $29 a truck.
+> Pren does the back office for trucking companies, from owner-operators to large fleets, in every state. Your IFTA fuel tax, Form 2290, IRP, UCR, books, payroll and business tax returns are prepared from your ELD and fuel card, checked by a CPA and filed after you approve, with the proof one click away. One price per truck: $29 for each of your first 10 trucks and $14 for each truck after.
 
-Pren (usepren.com) does the back office for trucking companies, from San Francisco, CA. It serves owner-operators and fleets of up to 49 trucks in every US state: IFTA fuel tax returns, Form 2290, UCR, IRP, MCS-150 and weight-distance filings, monthly books with profit per truck, driver payroll and owner-operator settlements, and business income tax returns. Customers start with their USDOT number in the Pren app at https://app.usepren.com.
+Pren (usepren.com) does the back office for trucking companies, from San Francisco, CA. It serves owner-operators and fleets of every size in every US state: IFTA fuel tax returns, Form 2290, UCR, IRP, MCS-150 and weight-distance filings, monthly books with profit per truck, driver payroll and owner-operator settlements, and business income tax returns. Customers start with their USDOT number in the Pren app at https://app.usepren.com.
 
 Key facts:
 - Website: https://usepren.com/
 - Start or sign in: https://app.usepren.com/
-- Pricing, per truck, month to month: Compliance $29 a truck each month, at least $99; Back office $99 a truck each month, at least $299; Firm $129 a truck each month, at least $499. Trailers are free.
-- Who it serves: owner-operators and fleets of up to 49 trucks with a USDOT number: for-hire or private, interstate or intrastate, based in any US state. Fleets of 50 trucks or more are reviewed by a person before they start.
-- How it works: enter your DOT number; connect your ELD and fuel card through the provider's own sign-in (Pren never asks for passwords); approve each return on your phone; your Pren team files it and keeps the agency's receipt. A licensed preparer reviews each return.
-- Next deadline: third-quarter 2026 IFTA returns are due Oct 31, 2026.
+- Pricing, one price per truck, everything included: $29 a truck each month for the first 10 trucks, $14 for each truck after, at least $145. Fleets that sign by December 31, 2026 keep that price while they stay; from January 1, 2027 new fleets pay $32 a truck for the first 10 (at least $160). Trailers and drivers are free, a truck parked all month isn't billed, and nothing is charged until the owner approves the first month. Where Pren doesn't run driver payroll yet, the price is $7 less per W-2 driver.
+- Who it serves: owner-operators and fleets of every size with a USDOT number: for-hire or private, interstate or intrastate, based in any US state. Fleets of up to 100 trucks start on their own; above 100, a person confirms your truck count and sends the same price in writing.
+- How it works: enter your DOT number; upload your ELD's IFTA report and your fuel card export (Pren never asks for passwords); approve each return on your phone; your Pren team files it and keeps the agency's receipt. A CPA checks each return.
+- Next deadline: third-quarter 2026 IFTA returns are due Mon, Nov 2, 2026.
 - Contact: ryan@usepren.com
 - Location: 501 Folsom Street, San Francisco, CA 94105
 
 ## Plans
 
-- **Compliance**: $29 a truck each month, at least $99. Fuel tax and truck filings. Your fuel taxes and truck filings, done and proven. Included in Compliance: IFTA fuel tax returns every quarter, from your ELD miles and fuel card; Form 2290 every year and for each truck you add, with a stamped Schedule 1; UCR, IRP, MCS-150 and weight-distance filings, with every deadline tracked; Every number with its proof, and your records yours to export.
-- **Back office**: $99 a truck each month, at least $299. Filings, books and payroll. Compliance plus your books, payroll and settlements. Everything in Compliance, plus: Monthly books with profit per truck: freight revenue, factoring, fuel and repairs, reconciled and reviewed; Driver payroll reconciled, or run by Pren for California drivers; Owner-operator settlements and Forms 1099-NEC; Your year-end figures ready for your tax preparer.
-- **Firm**: $129 a truck each month, at least $499. Everything, tax return included. Back office plus your business income tax returns. Everything in Back office, plus: Your business income tax return prepared, reviewed by a licensed preparer and filed; Form 1120, 1120-S or 1065, or Schedule C figures for a sole owner; State income or franchise tax returns where you are formed and operate; Your Pren team answers agency letters about the returns it filed.
+- **Back office**: $29 a truck each month for the first 10 trucks, $14 for each truck after, at least $145. Filings, books and driver pay. Every filing your trucks owe, your books, driver payroll and settlements. Your year's figures go to your tax preparer. Included: IFTA fuel tax returns every quarter, from your ELD miles and fuel card; Form 2290 every year and for each truck you add, with a stamped Schedule 1; UCR, IRP, MCS-150 and weight-distance filings, with every deadline tracked; Monthly books with profit per truck: freight revenue, factoring, fuel and repairs; Driver payroll and owner-operator settlements, with Forms 1099-NEC; Every filing checked by a CPA, and your records yours to export.
+- **Firm**: $29 a truck each month for the first 10 trucks, $14 for each truck after, at least $145. Everything, tax return included. Everything in Back office, plus your business income tax return, prepared, checked by a CPA and filed. Everything in Back office, plus: Your business income tax return prepared, checked by a CPA and filed; Form 1120, 1120-S or 1065, or Schedule C figures for a sole owner; State income or franchise tax returns where you are formed and operate; Your Pren team answers agency letters about the returns it filed.
 
 ## Services
 

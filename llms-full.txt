@@ -2,19 +2,19 @@
 
 Source: https://usepren.com/
 
-> Pren does the back office for trucking companies, from owner-operators to fleets of 49 trucks, in every state. Your IFTA fuel tax, Form 2290, IRP, UCR, books, payroll and business tax returns are prepared from your ELD and fuel card, reviewed by a licensed preparer and filed after you approve, with the proof one click away. Plans are priced per truck, month to month, from $29 a truck.
+> Pren does the back office for trucking companies, from owner-operators to large fleets, in every state. Your IFTA fuel tax, Form 2290, IRP, UCR, books, payroll and business tax returns are prepared from your ELD and fuel card, checked by a CPA and filed after you approve, with the proof one click away. One price per truck: $29 for each of your first 10 trucks and $14 for each truck after.
 
 ## Fuel tax, filings and books. Done and filed.
 
 IFTA, 2290, IRP, UCR, books, payroll and returns, prepared from your ELD and fuel card. You approve on your phone. We file, with the proof one click away.
 
-Who it serves: owner-operators and fleets of up to 49 trucks with a USDOT number: for-hire or private, interstate or intrastate, based in any US state. Fleets of 50 trucks or more are reviewed by a person before they start.
+Who it serves: owner-operators and fleets of every size with a USDOT number: for-hire or private, interstate or intrastate, based in any US state. Fleets of up to 100 trucks start on their own; above 100, a person confirms your truck count and sends the same price in writing.
 
 ## What goes away
 
 - A shoebox of fuel receipts: Your fuel card transaction is the record. If one is missing, we ask the same day.
 - A spreadsheet of miles by state: Your ELD's miles become miles by state on their own.
-- Five vendors and five bills: One price per truck, month to month.
+- Five vendors and five bills: One price per truck, and nothing to pay until you approve your first month.
 - Hours on hold over Motus and your authority: Pren reads your FMCSA record every day and flags a change the day it happens, with the proof to send your brokers.
 - Money left on the table: Reefer fuel refunds, 2290 credits and factor fees above your contract, found and claimed.
 - Scam letters and fake MCS-150 invoices: Forward any letter or email. We tell you if it is real and whether you owe anything.
@@ -28,16 +28,15 @@ Who it serves: owner-operators and fleets of up to 49 trucks with a USDOT number
 
 ## Plans and pricing
 
-- **Compliance**: $29 a truck each month, at least $99. Fuel tax and truck filings. Your fuel taxes and truck filings, done and proven. Included in Compliance: IFTA fuel tax returns every quarter, from your ELD miles and fuel card; Form 2290 every year and for each truck you add, with a stamped Schedule 1; UCR, IRP, MCS-150 and weight-distance filings, with every deadline tracked; Every number with its proof, and your records yours to export.
-- **Back office**: $99 a truck each month, at least $299. Filings, books and payroll. Compliance plus your books, payroll and settlements. Everything in Compliance, plus: Monthly books with profit per truck: freight revenue, factoring, fuel and repairs, reconciled and reviewed; Driver payroll reconciled, or run by Pren for California drivers; Owner-operator settlements and Forms 1099-NEC; Your year-end figures ready for your tax preparer.
-- **Firm**: $129 a truck each month, at least $499. Everything, tax return included. Back office plus your business income tax returns. Everything in Back office, plus: Your business income tax return prepared, reviewed by a licensed preparer and filed; Form 1120, 1120-S or 1065, or Schedule C figures for a sole owner; State income or franchise tax returns where you are formed and operate; Your Pren team answers agency letters about the returns it filed.
+- **Back office**: $29 a truck each month for the first 10 trucks, $14 for each truck after, at least $145. Filings, books and driver pay. Every filing your trucks owe, your books, driver payroll and settlements. Your year's figures go to your tax preparer. Included: IFTA fuel tax returns every quarter, from your ELD miles and fuel card; Form 2290 every year and for each truck you add, with a stamped Schedule 1; UCR, IRP, MCS-150 and weight-distance filings, with every deadline tracked; Monthly books with profit per truck: freight revenue, factoring, fuel and repairs; Driver payroll and owner-operator settlements, with Forms 1099-NEC; Every filing checked by a CPA, and your records yours to export.
+- **Firm**: $29 a truck each month for the first 10 trucks, $14 for each truck after, at least $145. Everything, tax return included. Everything in Back office, plus your business income tax return, prepared, checked by a CPA and filed. Everything in Back office, plus: Your business income tax return prepared, checked by a CPA and filed; Form 1120, 1120-S or 1065, or Schedule C figures for a sole owner; State income or franchise tax returns where you are formed and operate; Your Pren team answers agency letters about the returns it filed.
 
-The price covers Pren's work in your plan. Taxes and agency fees you owe, such as fuel tax, the 2290 tax, UCR and IRP fees, go from your account straight to the agency. A truck counts in a month when it is in service any day that month. Your exact plan and price are shown in the app before you accept.
+You pay nothing until you approve your first month's work. The price covers all of Pren's work. Taxes and agency fees you owe, such as fuel tax, the 2290 tax, UCR and IRP fees, go from your account straight to the agency. Where we don't run driver payroll yet, you keep your payroll service and pay $7 less per driver each month until we do. Your exact price is shown in the app before you accept.
 
 ## IFTA fuel tax, filed every quarter
 
 Page: https://usepren.com/services/fuel-tax/
-Included in every plan.
+Included in the price.
 
 Your ELD already knows the miles by state and your fuel card knows the gallons. Pren turns them into your quarterly return, checks every record, and files it after you approve, with the proof behind every number.
 
@@ -58,7 +57,7 @@ Your ELD already knows the miles by state and your fuel card knows the gallons. 
 ## Form 2290, every truck, every year
 
 Page: https://usepren.com/services/2290/
-Included in every plan.
+Included in the price.
 
 The heavy vehicle use tax is due for each truck of 55,000 pounds or more, every year and again when you add a truck. Pren checks each VIN, prepares the return, files it after you approve, and keeps the stamped Schedule 1 you need for your plates.
 
@@ -72,7 +71,7 @@ The heavy vehicle use tax is due for each truck of 55,000 pounds or more, every 
 ## UCR, IRP, MCS-150 and weight-distance
 
 Page: https://usepren.com/services/registrations/
-Included in every plan.
+Included in the price.
 
 The registrations that keep your trucks legal, found from your DOT number and filed inside your plan. Pren also reads your FMCSA record every day, so a change you did not make is caught the day it happens.
 
@@ -94,7 +93,7 @@ The registrations that keep your trucks legal, found from your DOT number and fi
 ## Books that know your trucks
 
 Page: https://usepren.com/services/accounting/
-Included in Back office and Firm.
+Included in the price.
 
 Monthly books kept from your bank, fuel card, factoring statements and ELD, closed every month and reviewed. You see profit per truck and cost per mile, and every number opens to the record behind it.
 
@@ -114,7 +113,7 @@ Monthly books kept from your bank, fuel card, factoring statements and ELD, clos
 ## Payroll and settlements
 
 Page: https://usepren.com/services/payroll/
-Included in Back office and Firm.
+Included in the price.
 
 Company drivers paid through your payroll provider and reconciled with your books, or paid through Pren for California drivers. Owner-operators get clear settlements and their 1099-NEC, without logging in to anything.
 
@@ -128,7 +127,7 @@ Company drivers paid through your payroll provider and reconciled with your book
 ## Your business tax return, done
 
 Page: https://usepren.com/services/taxes/
-Included in Firm.
+Included in the price, when Pren files your return.
 
 Your income tax return prepared from the same books and records as everything else, reviewed by a licensed preparer and filed after you approve. Truck depreciation, per diem and fuel are handled the way trucking works.
 
@@ -136,48 +135,48 @@ Your income tax return prepared from the same books and records as everything el
 
 - Form 1120, 1120-S or 1065, or Schedule C figures for a sole owner.
 - State income or franchise tax returns where you are formed and operate.
-- Reviewed by a licensed preparer before you sign.
+- Checked by a CPA before you sign.
 - Your Pren team answers agency letters about the returns it filed.
 
 ## How it works
 
 1. **Enter your DOT number.** Pren fills in your company, trucks and authority from FMCSA, and lists every filing you owe for the next 12 months.
-2. **Connect your ELD and fuel card.** Each connects in one click through the provider's own sign-in, so you never give us a password. If yours has no connection, upload its export and we show you where to find it.
+2. **Send your ELD and fuel card data.** Upload your ELD's IFTA report and your fuel card export. We show you exactly where to find them for your ELD and card. Pren never asks for your passwords.
 3. **Approve. We file.** Each return reaches your phone in one plain sentence, with the checks it passed. You tap Approve, your Pren team files it and keeps the agency's receipt.
 
 ## Questions about Pren
 
 ### Which states do you cover?
 
-Every US base state. Pren prepares your returns from each state's rules, and your Pren team files them at your base state's portal. Owner-operators and fleets of up to 49 trucks can start on their own; fleets of 50 or more are reviewed by a person first.
+Every US base state. Pren prepares your returns from each state's rules, and your Pren team files them at your base state's portal. Fleets of up to 100 trucks start on their own; above 100, a person confirms your truck count first.
 
 ### Do I need to change my ELD or fuel card?
 
-No. Pren connects to the ELD and fuel card you already use. If yours has no connection yet, you upload its export and we show you exactly where to find it.
+No. Keep the ELD and fuel card you use. You upload your ELD's IFTA report and your fuel card export, and we show you exactly where to find them.
 
 ### Will you ever ask for my passwords?
 
-No. Your ELD, fuel card and bank connect through the provider's own sign-in, and state agencies give Pren access through their own authorization forms. Pren never asks for a password by email, text or phone. If someone does, it is not us.
+No. You upload your ELD and fuel card exports, and state agencies give Pren access through their own authorization forms. Pren never asks for a password by email, text or phone. If someone does, it is not us.
 
 ### Who checks my returns before they are filed?
 
-A licensed preparer on your Pren team reviews each return, and nothing is filed until you approve it. You see the return in one plain sentence, the checks it passed and the records behind every number.
+A CPA on your Pren team checks each return, and nothing is filed until you approve it. You see the return in one plain sentence, the checks it passed and the records behind every number.
 
 ### I already use a permit service or a bookkeeper. Can I switch?
 
-Yes. Start with your DOT number and connect your data. Pren prepares the current quarter from your ELD's history and picks up each filing as it comes due. A review of earlier quarters is available and priced before you agree to it.
+Yes. Start with your DOT number and send your ELD and fuel card data. Pren prepares the current quarter from your ELD's history and picks up each filing as it comes due. A review of earlier quarters is available and priced before you agree to it.
 
 ### When is the next IFTA return due?
 
-Third-quarter returns, for July to September, are due Oct 31, 2026. Start now and Pren prepares the quarter from your ELD's history.
+Third-quarter returns, for July to September, are due Mon, Nov 2, 2026 (October 31 falls on a Saturday). Send us your ELD's IFTA report and fuel card export and we build your third quarter.
 
-### What does it cost beyond the plan?
+### What does it cost beyond the price?
 
-The plan price is Pren's whole fee for the work in your plan. The taxes and agency fees you owe, such as fuel tax, the 2290 tax, UCR and IRP fees, go from your account straight to the agency. Work outside your plan is priced before you agree to it.
+Nothing. The price is Pren's whole fee: no setup fee, no data fee, no per-filing fee. The taxes and agency fees you owe, such as fuel tax, the 2290 tax, UCR and IRP fees, go from your account straight to the agency. Where we don't run driver payroll yet, you keep your payroll service and pay $7 less per driver each month until we do.
 
 ### Is there a contract?
 
-No. Plans are month to month. Cancel any month and take a full export of your records with you.
+You can cancel free until you approve your first month, and we take no card or bank details before then. Fleets that sign by December 31, 2026 keep their price as long as they stay and commit to 12 months after that first month; leaving early costs $145, once, and nothing if you sell or close. Your records are yours to export any time.
 
 ## Contact
 
